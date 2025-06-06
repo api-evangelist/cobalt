@@ -1,59 +1,60 @@
-# Datadog (datadog)
-Datadog is a monitoring and analytics platform that helps organizations gain insight into their infrastructure, applications, and services. It allows users to collect, visualize, and analyze real-time data from a variety of sources, including servers, databases, and cloud services. Datadog's platform enables companies to track performance metrics, troubleshoot issues, and optimize their systems for peak efficiency. With its customizable dashboards and alerting system, Datadog empowers teams to proactively monitor their environments and ensure smooth operations. Ultimately, Datadog helps businesses make data-driven decisions and improve the overall performance of their technology stack.
+# Cobalt (cobalt)
+Traditional integrations are slow, fragmented, and hinder growth. Cobalt is changing that. A next-gen integration platform with 1,000+ connectors and AI-driven automationredefining how businesses integrate, operate, and scale.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-search/infrastructure/main/_apis/pagerduty/apis.md)
+**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/cobalt/refs/heads/main/apis.yml)
 
 ## Scope
 
+- **Type:** Contract 
+- **Position:** Consuming 
+- **Access:** 3rd-Party 
 
 ## Tags:
 
- - Monitoring, Analytics, Visualizations, Dashboards, Platform
+ - Integrations, Embedded SaaS Integration, Automation
 
 ## Timestamps
 
-- **Created:** 2024/04/14 
-- **Modified:** 2025-06-04 
+- **Created:** 2025-06-05 
+- **Modified:** 2025-06-05 
 
 ## APIs
 
-### Datadog API
-The Datadog API is an HTTP REST API. The API uses resource-oriented URLs to call the API, uses status codes to indicate the success or failure of requests, returns JSON from all requests, and uses standard HTTP response codes. Use the Datadog API to access the Datadog platform programmatically.
+### Cobalt
+Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them  with the help of AI agents 
 
-**Human URL:** [https://docs.datadoghq.com/](https://docs.datadoghq.com/)
+**Human URL:** [ https://www.gocobalt.io/]( https://www.gocobalt.io/)
 
 
 #### Tags:
 
- - No Tags
+ - Integrations, Embedded SaaS Integration, Automation
 
 #### Properties
 
-- [OpenAPI](openapi/datadog-openapi-original.yml)
-- [Documentation](https://docs.datadoghq.com/)
+- [Documentation]( https://www.gocobalt.io/)
 
 ## Common Properties
 
-- [Products](https://www.datadoghq.com/product/)
-- [Customers](https://www.datadoghq.com/customers/)
-- [Pricing](https://www.datadoghq.com/pricing/)
-- [Integrations](https://docs.datadoghq.com/integrations/)
-- [About](https://www.datadoghq.com/about/leadership/)
-- [Blog](https://www.datadoghq.com/blog/)
-- [Login](https://app.datadoghq.com/account/login)
-- [Login](https://app.datadoghq.com/account/login)
-- [Login](https://app.datadoghq.com/account/login)
-- [SignUp](https://us5.datadoghq.com/signup)
-- [Support](https://www.datadoghq.com/support/)
-- [Certifications](https://www.datadoghq.com/certification/overview/)
-- [PrivacyPolicy](https://www.datadoghq.com/privacy/)
-- [Security](https://www.datadoghq.com/security/)
-- [Trust](https://trust.datadoghq.com/)
-- [Partners](https://www.datadoghq.com/partner/network/)
+- [About](https://www.gocobalt.io/about-us)
+- [Website](https://www.gocobalt.io/)
+- [Integrations](https://www.gocobalt.io/integrations)
+- [GettingStarted](https://docs.gocobalt.io/overview)
+- [Workflows](https://docs.gocobalt.io/build/workflow/overview)
+- [Security](https://docs.gocobalt.io/governance/overview)
+- [PrivacyPolicy](https://docs.gocobalt.io/governance/privacy)
+- [TermsOfService](https://docs.gocobalt.io/governance/terms-of-use)
+- [Documentation](https://docs.gocobalt.io/api-reference/overview)
+- [SDKs](https://docs.gocobalt.io/sdks/overview)
+- [Pricing](https://www.gocobalt.io/pricing)
+- [Security](https://www.gocobalt.io/security)
+- [Status](https://status.gocobalt.io/status/app)
+- [SignUp](https://www.gocobalt.io/sign-up)
+- [Login](https://app.gocobalt.io/login)
 
 ## Maintainers
 
-**FN:** API Evangelist
+**FN:** Kin Lane
 
 **Email:** info@apievangelist.com
 
