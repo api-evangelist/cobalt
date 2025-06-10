@@ -1157,6 +1157,15 @@ common:
       - name: Unlimited Connectors
       - name: Unlimited Workflows
       - name: Whiteglove Support
+  - name: Use Cases
+    type: UseCases
+    data:
+      - name: Enhancing User Experience and Adoption
+      - name: Driving SaaS Growth
+      - name: Revenue Expansion
+      - name: Competitive Differentiation
+      - name: Streamlining Business Processes
+      - name: Automated Workflows
 created: '2025-06-05'
 modified: '2025-06-10'
 position: Consuming
