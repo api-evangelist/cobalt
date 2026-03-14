@@ -1,0 +1,50 @@
+{
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cobalt/refs/heads/main/json-schema/config.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Config",
+  "description": "An integration configuration for a linked account within the Cobalt embedded integration platform.",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Configuration ID."
+    },
+    "slug": {
+      "type": "string",
+      "description": "Application slug."
+    },
+    "linked_account_id": {
+      "type": "string",
+      "description": "The linked account ID."
+    },
+    "fields": {
+      "type": "object",
+      "description": "Configuration fields."
+    },
+    "workflows": {
+      "type": "array",
+      "description": "Workflow enablement settings.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp."
+    }
+  }
+}

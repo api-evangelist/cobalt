@@ -1,0 +1,81 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "cobalt": "https://api.gocobalt.io/api/v2/",
+    "LinkedAccount": {
+      "@id": "cobalt:LinkedAccount",
+      "@context": {
+        "_id": "schema:identifier",
+        "linked_account_id": "schema:identifier",
+        "name": "schema:name",
+        "your_app": "schema:additionalProperty",
+        "created_at": "schema:dateCreated",
+        "updated_at": "schema:dateModified"
+      }
+    },
+    "Application": {
+      "@id": "cobalt:Application",
+      "@context": {
+        "name": "schema:name",
+        "slug": "schema:identifier",
+        "icon": "schema:image",
+        "description": "schema:description",
+        "auth_type": "schema:additionalProperty",
+        "connected": "schema:status"
+      }
+    },
+    "Config": {
+      "@id": "cobalt:Config",
+      "@context": {
+        "_id": "schema:identifier",
+        "slug": "schema:identifier",
+        "linked_account_id": "schema:identifier",
+        "fields": "schema:additionalProperty",
+        "workflows": "schema:hasPart",
+        "created_at": "schema:dateCreated",
+        "updated_at": "schema:dateModified"
+      }
+    },
+    "Webhook": {
+      "@id": "cobalt:Webhook",
+      "@context": {
+        "_id": "schema:identifier",
+        "webhook_url": "schema:url",
+        "webhook_events": "schema:additionalProperty",
+        "linked_account_id": "schema:identifier"
+      }
+    },
+    "Execution": {
+      "@id": "cobalt:Execution",
+      "@context": {
+        "_id": "schema:identifier",
+        "workflow_id": "schema:identifier",
+        "linked_account_id": "schema:identifier",
+        "status": "schema:status",
+        "started_at": "schema:startDate",
+        "completed_at": "schema:endDate",
+        "logs": "schema:additionalProperty"
+      }
+    },
+    "Workflow": {
+      "@id": "cobalt:Workflow",
+      "@context": {
+        "_id": "schema:identifier",
+        "name": "schema:name",
+        "description": "schema:description",
+        "nodes": "schema:hasPart",
+        "created_at": "schema:dateCreated",
+        "updated_at": "schema:dateModified"
+      }
+    },
+    "Datastore": {
+      "@id": "cobalt:Datastore",
+      "@context": {
+        "_id": "schema:identifier",
+        "name": "schema:name",
+        "slug": "schema:identifier",
+        "config_id": "schema:identifier"
+      }
+    }
+  }
+}

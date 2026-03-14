@@ -1,0 +1,48 @@
+{
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cobalt/refs/heads/main/json-schema/execution.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Execution",
+  "description": "A workflow execution record within the Cobalt embedded integration platform.",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Execution ID."
+    },
+    "workflow_id": {
+      "type": "string",
+      "description": "The workflow that was executed."
+    },
+    "linked_account_id": {
+      "type": "string",
+      "description": "The linked account ID."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "running",
+        "completed",
+        "failed"
+      ],
+      "description": "Execution status."
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Execution start timestamp."
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Execution completion timestamp."
+    },
+    "logs": {
+      "type": "array",
+      "description": "Execution logs.",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

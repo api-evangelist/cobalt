@@ -1,0 +1,33 @@
+{
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cobalt/refs/heads/main/json-schema/application.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Application",
+  "description": "An enabled application within the Cobalt embedded integration platform.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Application name."
+    },
+    "slug": {
+      "type": "string",
+      "description": "Application slug identifier."
+    },
+    "icon": {
+      "type": "string",
+      "description": "Application icon URL."
+    },
+    "description": {
+      "type": "string",
+      "description": "Application description."
+    },
+    "auth_type": {
+      "type": "string",
+      "description": "Authentication type (e.g., oauth2, api_key)."
+    },
+    "connected": {
+      "type": "boolean",
+      "description": "Whether the application is connected for the linked account."
+    }
+  }
+}

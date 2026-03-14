@@ -1,0 +1,29 @@
+{
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cobalt/refs/heads/main/json-schema/webhook.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Webhook",
+  "description": "A webhook subscription for receiving real-time notifications when events occur in Cobalt.",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Webhook ID."
+    },
+    "webhook_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The webhook notification URL."
+    },
+    "webhook_events": {
+      "type": "array",
+      "description": "Subscribed event names.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "linked_account_id": {
+      "type": "string",
+      "description": "The linked account ID."
+    }
+  }
+}

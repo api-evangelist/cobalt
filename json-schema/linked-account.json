@@ -1,0 +1,35 @@
+{
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cobalt/refs/heads/main/json-schema/linked-account.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LinkedAccount",
+  "description": "A linked account representing an end-customer within the Cobalt embedded integration platform.",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Internal identifier."
+    },
+    "linked_account_id": {
+      "type": "string",
+      "description": "The unique identifier for the linked account."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name."
+    },
+    "your_app": {
+      "type": "object",
+      "description": "Custom metadata."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp."
+    }
+  }
+}

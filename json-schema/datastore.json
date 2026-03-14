@@ -1,0 +1,25 @@
+{
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cobalt/refs/heads/main/json-schema/datastore.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Datastore",
+  "description": "A datastore within the Cobalt embedded integration platform for managing structured records.",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Datastore ID."
+    },
+    "name": {
+      "type": "string",
+      "description": "Datastore name."
+    },
+    "slug": {
+      "type": "string",
+      "description": "Datastore slug."
+    },
+    "config_id": {
+      "type": "string",
+      "description": "Associated configuration ID."
+    }
+  }
+}
