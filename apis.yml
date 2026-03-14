@@ -2,19 +2,26 @@ aid: cobalt
 url: >-
   https://raw.githubusercontent.com/api-evangelist/cobalt/refs/heads/main/apis.yml
 apis:
-  - aid: cobalt:cobalt
-    name: Cobalt
+  - aid: cobalt:cobalt-api
+    name: Cobalt API
     tags:
       - Integrations
       - Embedded SaaS Integration
       - Automation
-    humanURL: ' https://www.gocobalt.io/'
+      - iPaaS
+    humanURL: https://docs.gocobalt.io/api-reference/overview
+    baseURL: https://api.gocobalt.io/api/v2
     properties:
-      - url: ' https://www.gocobalt.io/'
+      - url: https://docs.gocobalt.io/api-reference/overview
         type: Documentation
+      - url: openapi/cobalt-api-openapi.yml
+        type: OpenAPI
     description: >-
+      The Cobalt API enables developers to programmatically manage integrations,
+      linked accounts, configurations, events, webhooks, executions, public
+      workflows, and datastores within the Cobalt embedded integration platform.
       Cobalt helps product and engineering teams build native integrations,
-      deploy them within days, and monetize them  with the help of AI agents 
+      deploy them within days, and monetize them with the help of AI agents.
 name: Cobalt
 tags:
   - Integrations
@@ -1167,7 +1174,7 @@ common:
     name: Use Cases
     type: UseCases
 created: '2025-06-05'
-modified: '2026-01-02'
+modified: '2026-03-14'
 position: Consuming
 description: >-
   Traditional integrations are slow, fragmented, and hinder growth. Cobalt is

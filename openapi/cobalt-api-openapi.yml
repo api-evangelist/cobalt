@@ -1,0 +1,1326 @@
+openapi: 3.1.0
+info:
+  title: Cobalt API
+  description: >-
+    The Cobalt API enables developers to programmatically manage integrations,
+    linked accounts, configurations, events, webhooks, executions, public
+    workflows, and datastores within the Cobalt embedded integration platform.
+    Cobalt helps product and engineering teams build native integrations, deploy
+    them within days, and monetize them with the help of AI agents.
+  version: 2.0.0
+  contact:
+    name: Cobalt Support
+    url: https://www.gocobalt.io/
+  termsOfService: https://docs.gocobalt.io/governance/terms-of-use
+  license:
+    name: Proprietary
+    url: https://docs.gocobalt.io/governance/terms-of-use
+servers:
+  - url: https://api.gocobalt.io/api/v2
+    description: Cobalt Production API
+security:
+  - apiKey: []
+tags:
+  - name: Session Token
+    description: Generate session tokens for linked account authentication.
+  - name: Linked Accounts
+    description: Manage linked accounts representing your end-customers.
+  - name: Applications
+    description: Retrieve details about enabled applications.
+  - name: Config
+    description: Manage integration configurations for linked accounts.
+  - name: Events
+    description: Trigger events to initiate workflows.
+  - name: Webhooks
+    description: Subscribe to real-time notifications when events occur in Cobalt.
+  - name: Executions
+    description: Retrieve details about workflow executions.
+  - name: Public Workflows
+    description: Create and manage public workflows.
+  - name: Cobalt Hosted
+    description: Generate hosted portal URLs for linked accounts.
+  - name: Datastores
+    description: Manage datastores and their records.
+paths:
+  /public/session-token:
+    post:
+      operationId: createSessionToken
+      summary: Generate Token for Linked Account
+      description: >-
+        Generates a session token for a linked account. Session tokens expire
+        in 24 hours and are used to authenticate client-side SDK calls.
+      tags:
+        - Session Token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - linked_account_id
+              properties:
+                linked_account_id:
+                  type: string
+                  description: The unique identifier of the linked account.
+      responses:
+        '200':
+          description: Session token generated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: The session token for the linked account.
+        '401':
+          description: Unauthorized - Invalid API key.
+        '400':
+          description: Bad request - Missing required parameters.
+
+  /public/linked-account:
+    get:
+      operationId: listLinkedAccounts
+      summary: Get All Linked Accounts
+      description: Returns a list of all linked accounts.
+      tags:
+        - Linked Accounts
+      responses:
+        '200':
+          description: List of linked accounts retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LinkedAccount'
+        '401':
+          description: Unauthorized - Invalid API key.
+    post:
+      operationId: createLinkedAccount
+      summary: Create Linked Account
+      description: >-
+        Creates a new linked account. Linked accounts represent your
+        end-customers on whose behalf you call the Cobalt APIs.
+      tags:
+        - Linked Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - linked_account_id
+              properties:
+                linked_account_id:
+                  type: string
+                  description: The unique identifier for the linked account.
+                name:
+                  type: string
+                  description: Display name for the linked account.
+                your_app:
+                  type: object
+                  description: Custom metadata about the linked account.
+      responses:
+        '200':
+          description: Linked account created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedAccount'
+        '401':
+          description: Unauthorized - Invalid API key.
+        '400':
+          description: Bad request - Missing required parameters.
+
+  /public/linked-account/{linked_account_id}:
+    get:
+      operationId: getLinkedAccount
+      summary: Get Linked Account by ID
+      description: Returns a linked account by its unique identifier.
+      tags:
+        - Linked Accounts
+      parameters:
+        - name: linked_account_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique identifier of the linked account.
+      responses:
+        '200':
+          description: Linked account retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedAccount'
+        '404':
+          description: Linked account not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+    delete:
+      operationId: deleteLinkedAccount
+      summary: Delete Linked Account
+      description: Deletes a linked account by its unique identifier.
+      tags:
+        - Linked Accounts
+      parameters:
+        - name: linked_account_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique identifier of the linked account.
+      responses:
+        '200':
+          description: Linked account deleted successfully.
+        '404':
+          description: Linked account not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/linked-account/upsert:
+    post:
+      operationId: upsertLinkedAccount
+      summary: Upsert Linked Account
+      description: >-
+        Creates or updates a linked account. If the linked account exists,
+        it will be updated; otherwise a new one will be created.
+      tags:
+        - Linked Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - linked_account_id
+              properties:
+                linked_account_id:
+                  type: string
+                  description: The unique identifier for the linked account.
+                name:
+                  type: string
+                  description: Display name for the linked account.
+                your_app:
+                  type: object
+                  description: Custom metadata about the linked account.
+      responses:
+        '200':
+          description: Linked account upserted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedAccount'
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/linked-account/{linked_account_id}/migrate-token:
+    post:
+      operationId: migrateToken
+      summary: Migrate Token for Linked Account
+      description: Migrates authentication tokens for a linked account.
+      tags:
+        - Linked Accounts
+      parameters:
+        - name: linked_account_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique identifier of the linked account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: The application slug.
+                token:
+                  type: object
+                  description: The token data to migrate.
+      responses:
+        '200':
+          description: Token migrated successfully.
+        '401':
+          description: Unauthorized - Invalid API key.
+        '400':
+          description: Bad request.
+
+  /public/application:
+    get:
+      operationId: listApplications
+      summary: Get All Applications
+      description: >-
+        Returns all enabled applications. If a linked_account_id header is
+        provided, returns applications specific to that linked account.
+      tags:
+        - Applications
+      parameters:
+        - name: linked_account_id
+          in: header
+          schema:
+            type: string
+          description: Optional linked account ID to filter applications.
+      responses:
+        '200':
+          description: List of applications retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Application'
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/application/{slug}:
+    get:
+      operationId: getApplicationBySlug
+      summary: Get Application by Slug
+      description: Returns application details for the specified application slug.
+      tags:
+        - Applications
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The application slug identifier.
+        - name: linked_account_id
+          in: header
+          schema:
+            type: string
+          description: Optional linked account ID for context.
+      responses:
+        '200':
+          description: Application retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '404':
+          description: Application not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/config:
+    post:
+      operationId: upsertConfig
+      summary: Upsert Config
+      description: >-
+        Creates a new configuration or returns the existing one for the
+        specified linked account and application. Configs store customizations
+        for each integration of your end-customers.
+      tags:
+        - Config
+      parameters:
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - slug
+              properties:
+                slug:
+                  type: string
+                  description: The application slug.
+                config_id:
+                  type: string
+                  description: Optional config ID for specific config retrieval.
+      responses:
+        '200':
+          description: Config upserted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/config/{config_id}:
+    get:
+      operationId: getConfigById
+      summary: Get Config by ID
+      description: Returns a configuration by its unique identifier.
+      tags:
+        - Config
+      parameters:
+        - name: config_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The configuration ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: Config retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+        '404':
+          description: Config not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+    put:
+      operationId: updateConfig
+      summary: Update Config
+      description: Updates an existing configuration with fields and workflows.
+      tags:
+        - Config
+      parameters:
+        - name: config_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The configuration ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fields:
+                  type: object
+                  description: Configuration fields to update.
+                workflows:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      enabled:
+                        type: boolean
+                  description: Workflow enablement settings.
+      responses:
+        '200':
+          description: Config updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+        '404':
+          description: Config not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+    delete:
+      operationId: deleteConfig
+      summary: Delete Config
+      description: Deletes a configuration by its unique identifier.
+      tags:
+        - Config
+      parameters:
+        - name: config_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The configuration ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: Config deleted successfully.
+        '404':
+          description: Config not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/config/all:
+    get:
+      operationId: listInstalledConfigs
+      summary: Get All Installed Configs
+      description: Returns all installed configurations for a linked account.
+      tags:
+        - Config
+      parameters:
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: List of configs retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Config'
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/config/{config_id}/fields:
+    get:
+      operationId: getConfigFields
+      summary: Get All Config Fields
+      description: Returns all fields for a specific configuration.
+      tags:
+        - Config
+      parameters:
+        - name: config_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The configuration ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: Config fields retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    value:
+                      type: string
+        '404':
+          description: Config not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/config/{config_id}/field/{field_id}:
+    get:
+      operationId: getFieldValueById
+      summary: Get Field Value by ID in Config
+      description: Returns a specific field value from a configuration.
+      tags:
+        - Config
+      parameters:
+        - name: config_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The configuration ID.
+        - name: field_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The field ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: Field value retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  value:
+                    type: string
+        '404':
+          description: Field or config not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+    put:
+      operationId: updateFieldValueById
+      summary: Update Field Value by ID in Config
+      description: Updates a specific field value in a configuration.
+      tags:
+        - Config
+      parameters:
+        - name: config_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The configuration ID.
+        - name: field_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The field ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: The new field value.
+      responses:
+        '200':
+          description: Field value updated successfully.
+        '404':
+          description: Field or config not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+    delete:
+      operationId: deleteFieldValueById
+      summary: Delete Field Value by ID in Config
+      description: Deletes a specific field value from a configuration.
+      tags:
+        - Config
+      parameters:
+        - name: config_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The configuration ID.
+        - name: field_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The field ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: Field value deleted successfully.
+        '404':
+          description: Field or config not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/config/{config_id}/rule-engine/options:
+    get:
+      operationId: getRuleEngineOptions
+      summary: Get Options for Rule Engine
+      description: Returns the available options for the rule engine of a configuration.
+      tags:
+        - Config
+      parameters:
+        - name: config_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The configuration ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: Rule engine options retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Config not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/event/{slug}:
+    post:
+      operationId: triggerEvent
+      summary: Trigger Event
+      description: >-
+        Triggers a webhook event created for your app. The event must first
+        be created on your Cobalt dashboard. Events are used to trigger
+        workflows in Cobalt.
+      tags:
+        - Events
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The event slug identifier.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - event
+              properties:
+                event:
+                  type: string
+                  description: The event name to trigger.
+                config_id:
+                  type: string
+                  description: Optional configuration ID.
+                payload:
+                  type: object
+                  description: Optional payload data to pass to the event.
+      responses:
+        '200':
+          description: Event triggered successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  execution_id:
+                    type: string
+        '404':
+          description: Event not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/webhook:
+    post:
+      operationId: createWebhook
+      summary: Create Webhook
+      description: >-
+        Creates a webhook subscription. Webhooks allow you to receive
+        real-time notifications when events occur in Cobalt.
+      tags:
+        - Webhooks
+      parameters:
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - webhook_url
+                - webhook_events
+              properties:
+                webhook_url:
+                  type: string
+                  format: uri
+                  description: The URL to receive webhook notifications.
+                webhook_events:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of event names to subscribe to.
+      responses:
+        '200':
+          description: Webhook created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '401':
+          description: Unauthorized - Invalid API key.
+        '400':
+          description: Bad request - Missing required parameters.
+    get:
+      operationId: getWebhook
+      summary: Get Webhook
+      description: Retrieves the webhook subscription for a linked account.
+      tags:
+        - Webhooks
+      parameters:
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: Webhook retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '404':
+          description: Webhook not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/webhook/unsubscribe:
+    post:
+      operationId: unsubscribeWebhook
+      summary: Unsubscribe Webhook Events
+      description: Unsubscribes from webhook events for a linked account.
+      tags:
+        - Webhooks
+      parameters:
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webhook_events:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of event names to unsubscribe from.
+      responses:
+        '200':
+          description: Webhook events unsubscribed successfully.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/execution/{execution_id}:
+    get:
+      operationId: getExecutionById
+      summary: Get Execution by ID
+      description: Retrieves the details of a specific workflow execution.
+      tags:
+        - Executions
+      parameters:
+        - name: execution_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The execution ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: Execution details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Execution'
+        '404':
+          description: Execution not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/execution:
+    get:
+      operationId: listExecutions
+      summary: List Executions
+      description: Returns a list of workflow executions for a linked account.
+      tags:
+        - Executions
+      parameters:
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: List of executions retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Execution'
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/workflow:
+    post:
+      operationId: createPublicWorkflow
+      summary: Create Public Workflow
+      description: Creates a new public workflow with the specified nodes.
+      tags:
+        - Public Workflows
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - nodes
+              properties:
+                name:
+                  type: string
+                  description: The name of the workflow.
+                description:
+                  type: string
+                  description: A description of the workflow.
+                nodes:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        description: The node type (e.g., start, ai_code_executor).
+                      config:
+                        type: object
+                        description: Node configuration.
+                  description: Array of workflow nodes.
+      responses:
+        '200':
+          description: Public workflow created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicWorkflow'
+        '401':
+          description: Unauthorized - Invalid session token.
+        '400':
+          description: Bad request.
+
+  /public/workflow/{workflow_id}/execute:
+    post:
+      operationId: executeWorkflow
+      summary: Execute Workflow
+      description: Executes a specific workflow programmatically.
+      tags:
+        - Public Workflows
+      parameters:
+        - name: workflow_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The workflow ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+                  description: Optional payload to pass to the workflow.
+      responses:
+        '200':
+          description: Workflow execution initiated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  execution_id:
+                    type: string
+                  status:
+                    type: string
+        '404':
+          description: Workflow not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/cobalt-hosted:
+    post:
+      operationId: createHostedPortalUrl
+      summary: Create Cobalt Hosted Portal URL
+      description: >-
+        Generates a hosted portal URL for a linked account, enabling
+        end-customers to manage their integrations through a Cobalt-hosted
+        interface.
+      tags:
+        - Cobalt Hosted
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - linked_account_id
+              properties:
+                linked_account_id:
+                  type: string
+                  description: The linked account ID.
+      responses:
+        '200':
+          description: Hosted portal URL generated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    format: uri
+                    description: The hosted portal URL.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/datastore:
+    get:
+      operationId: listConfigDatastores
+      summary: Get All Config Datastores
+      description: Returns all datastores associated with a configuration.
+      tags:
+        - Datastores
+      parameters:
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: List of datastores retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Datastore'
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/datastore/{datastore_id}/records:
+    get:
+      operationId: listDatastoreRecords
+      summary: List Records in Datastore
+      description: Returns all records in a specific datastore.
+      tags:
+        - Datastores
+      parameters:
+        - name: datastore_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The datastore ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      responses:
+        '200':
+          description: Datastore records retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '404':
+          description: Datastore not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+  /public/datastore/{datastore_id}/search:
+    post:
+      operationId: searchDatastoreRecords
+      summary: Search Datastore Records
+      description: Searches for records in a specific datastore.
+      tags:
+        - Datastores
+      parameters:
+        - name: datastore_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The datastore ID.
+        - name: linked_account_id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The linked account ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: object
+                  description: Search query parameters.
+      responses:
+        '200':
+          description: Search results retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '404':
+          description: Datastore not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: >-
+        API key for authentication. Found in Cobalt dashboard under
+        Settings > Developer > Setup tab.
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Session token generated via the Session Token endpoint.
+
+  schemas:
+    LinkedAccount:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Internal identifier.
+        linked_account_id:
+          type: string
+          description: The unique identifier for the linked account.
+        name:
+          type: string
+          description: Display name.
+        your_app:
+          type: object
+          description: Custom metadata.
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp.
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp.
+
+    Application:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Application name.
+        slug:
+          type: string
+          description: Application slug identifier.
+        icon:
+          type: string
+          description: Application icon URL.
+        description:
+          type: string
+          description: Application description.
+        auth_type:
+          type: string
+          description: Authentication type (e.g., oauth2, api_key).
+        connected:
+          type: boolean
+          description: Whether the application is connected for the linked account.
+
+    Config:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Configuration ID.
+        slug:
+          type: string
+          description: Application slug.
+        linked_account_id:
+          type: string
+          description: The linked account ID.
+        fields:
+          type: object
+          description: Configuration fields.
+        workflows:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              enabled:
+                type: boolean
+          description: Workflow enablement settings.
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Webhook:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Webhook ID.
+        webhook_url:
+          type: string
+          format: uri
+          description: The webhook notification URL.
+        webhook_events:
+          type: array
+          items:
+            type: string
+          description: Subscribed event names.
+        linked_account_id:
+          type: string
+          description: The linked account ID.
+
+    Execution:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Execution ID.
+        workflow_id:
+          type: string
+          description: The workflow that was executed.
+        linked_account_id:
+          type: string
+          description: The linked account ID.
+        status:
+          type: string
+          enum:
+            - pending
+            - running
+            - completed
+            - failed
+          description: Execution status.
+        started_at:
+          type: string
+          format: date-time
+          description: Execution start timestamp.
+        completed_at:
+          type: string
+          format: date-time
+          description: Execution completion timestamp.
+        logs:
+          type: array
+          items:
+            type: object
+          description: Execution logs.
+
+    PublicWorkflow:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Workflow ID.
+        name:
+          type: string
+          description: Workflow name.
+        description:
+          type: string
+          description: Workflow description.
+        nodes:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              config:
+                type: object
+          description: Workflow nodes.
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Datastore:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Datastore ID.
+        name:
+          type: string
+          description: Datastore name.
+        slug:
+          type: string
+          description: Datastore slug.
+        config_id:
+          type: string
+          description: Associated configuration ID.
