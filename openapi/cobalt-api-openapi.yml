@@ -21,26 +21,26 @@ servers:
 security:
   - apiKey: []
 tags:
-  - name: Session Token
-    description: Generate session tokens for linked account authentication.
-  - name: Linked Accounts
-    description: Manage linked accounts representing your end-customers.
   - name: Applications
     description: Retrieve details about enabled applications.
-  - name: Config
-    description: Manage integration configurations for linked accounts.
-  - name: Events
-    description: Trigger events to initiate workflows.
-  - name: Webhooks
-    description: Subscribe to real-time notifications when events occur in Cobalt.
-  - name: Executions
-    description: Retrieve details about workflow executions.
-  - name: Public Workflows
-    description: Create and manage public workflows.
   - name: Cobalt Hosted
     description: Generate hosted portal URLs for linked accounts.
+  - name: Config
+    description: Manage integration configurations for linked accounts.
   - name: Datastores
     description: Manage datastores and their records.
+  - name: Events
+    description: Trigger events to initiate workflows.
+  - name: Executions
+    description: Retrieve details about workflow executions.
+  - name: Linked Accounts
+    description: Manage linked accounts representing your end-customers.
+  - name: Public Workflows
+    description: Create and manage public workflows.
+  - name: Session Token
+    description: Generate session tokens for linked account authentication.
+  - name: Webhooks
+    description: Subscribe to real-time notifications when events occur in Cobalt.
 paths:
   /public/session-token:
     post:

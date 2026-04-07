@@ -5,9 +5,9 @@ apis:
   - aid: cobalt:cobalt-api
     name: Cobalt API
     tags:
-      - Integrations
-      - Embedded SaaS Integration
       - Automation
+      - Embedded SaaS Integration
+      - Integrations
       - iPaaS
     humanURL: https://docs.gocobalt.io/api-reference/overview
     baseURL: https://api.gocobalt.io/api/v2
@@ -40,9 +40,9 @@ apis:
       deploy them within days, and monetize them with the help of AI agents.
 name: Cobalt
 tags:
-  - Integrations
   - Automation
   - Embedded iPaaS
+  - Integrations
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
