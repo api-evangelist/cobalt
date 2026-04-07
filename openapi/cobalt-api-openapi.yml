@@ -45,7 +45,7 @@ paths:
   /public/session-token:
     post:
       operationId: createSessionToken
-      summary: Generate Token for Linked Account
+      summary: Cobalt Generate Token for Linked Account
       description: >-
         Generates a session token for a linked account. Session tokens expire
         in 24 hours and are used to authenticate client-side SDK calls.
@@ -82,7 +82,7 @@ paths:
   /public/linked-account:
     get:
       operationId: listLinkedAccounts
-      summary: Get All Linked Accounts
+      summary: Cobalt Get All Linked Accounts
       description: Returns a list of all linked accounts.
       tags:
         - Linked Accounts
@@ -99,7 +99,7 @@ paths:
           description: Unauthorized - Invalid API key.
     post:
       operationId: createLinkedAccount
-      summary: Create Linked Account
+      summary: Cobalt Create Linked Account
       description: >-
         Creates a new linked account. Linked accounts represent your
         end-customers on whose behalf you call the Cobalt APIs.
@@ -138,7 +138,7 @@ paths:
   /public/linked-account/{linked_account_id}:
     get:
       operationId: getLinkedAccount
-      summary: Get Linked Account by ID
+      summary: Cobalt Get Linked Account by ID
       description: Returns a linked account by its unique identifier.
       tags:
         - Linked Accounts
@@ -162,7 +162,7 @@ paths:
           description: Unauthorized - Invalid API key.
     delete:
       operationId: deleteLinkedAccount
-      summary: Delete Linked Account
+      summary: Cobalt Delete Linked Account
       description: Deletes a linked account by its unique identifier.
       tags:
         - Linked Accounts
@@ -184,7 +184,7 @@ paths:
   /public/linked-account/upsert:
     post:
       operationId: upsertLinkedAccount
-      summary: Upsert Linked Account
+      summary: Cobalt Upsert Linked Account
       description: >-
         Creates or updates a linked account. If the linked account exists,
         it will be updated; otherwise a new one will be created.
@@ -221,7 +221,7 @@ paths:
   /public/linked-account/{linked_account_id}/migrate-token:
     post:
       operationId: migrateToken
-      summary: Migrate Token for Linked Account
+      summary: Cobalt Migrate Token for Linked Account
       description: Migrates authentication tokens for a linked account.
       tags:
         - Linked Accounts
@@ -256,7 +256,7 @@ paths:
   /public/application:
     get:
       operationId: listApplications
-      summary: Get All Applications
+      summary: Cobalt Get All Applications
       description: >-
         Returns all enabled applications. If a linked_account_id header is
         provided, returns applications specific to that linked account.
@@ -283,7 +283,7 @@ paths:
   /public/application/{slug}:
     get:
       operationId: getApplicationBySlug
-      summary: Get Application by Slug
+      summary: Cobalt Get Application by Slug
       description: Returns application details for the specified application slug.
       tags:
         - Applications
@@ -314,7 +314,7 @@ paths:
   /public/config:
     post:
       operationId: upsertConfig
-      summary: Upsert Config
+      summary: Cobalt Upsert Config
       description: >-
         Creates a new configuration or returns the existing one for the
         specified linked account and application. Configs store customizations
@@ -356,7 +356,7 @@ paths:
   /public/config/{config_id}:
     get:
       operationId: getConfigById
-      summary: Get Config by ID
+      summary: Cobalt Get Config by ID
       description: Returns a configuration by its unique identifier.
       tags:
         - Config
@@ -386,7 +386,7 @@ paths:
           description: Unauthorized - Invalid API key.
     put:
       operationId: updateConfig
-      summary: Update Config
+      summary: Cobalt Update Config
       description: Updates an existing configuration with fields and workflows.
       tags:
         - Config
@@ -436,7 +436,7 @@ paths:
           description: Unauthorized - Invalid API key.
     delete:
       operationId: deleteConfig
-      summary: Delete Config
+      summary: Cobalt Delete Config
       description: Deletes a configuration by its unique identifier.
       tags:
         - Config
@@ -464,7 +464,7 @@ paths:
   /public/config/all:
     get:
       operationId: listInstalledConfigs
-      summary: Get All Installed Configs
+      summary: Cobalt Get All Installed Configs
       description: Returns all installed configurations for a linked account.
       tags:
         - Config
@@ -490,7 +490,7 @@ paths:
   /public/config/{config_id}/fields:
     get:
       operationId: getConfigFields
-      summary: Get All Config Fields
+      summary: Cobalt Get All Config Fields
       description: Returns all fields for a specific configuration.
       tags:
         - Config
@@ -531,7 +531,7 @@ paths:
   /public/config/{config_id}/field/{field_id}:
     get:
       operationId: getFieldValueById
-      summary: Get Field Value by ID in Config
+      summary: Cobalt Get Field Value by ID in Config
       description: Returns a specific field value from a configuration.
       tags:
         - Config
@@ -574,7 +574,7 @@ paths:
           description: Unauthorized - Invalid API key.
     put:
       operationId: updateFieldValueById
-      summary: Update Field Value by ID in Config
+      summary: Cobalt Update Field Value by ID in Config
       description: Updates a specific field value in a configuration.
       tags:
         - Config
@@ -616,7 +616,7 @@ paths:
           description: Unauthorized - Invalid API key.
     delete:
       operationId: deleteFieldValueById
-      summary: Delete Field Value by ID in Config
+      summary: Cobalt Delete Field Value by ID in Config
       description: Deletes a specific field value from a configuration.
       tags:
         - Config
@@ -650,7 +650,7 @@ paths:
   /public/config/{config_id}/rule-engine/options:
     get:
       operationId: getRuleEngineOptions
-      summary: Get Options for Rule Engine
+      summary: Cobalt Get Options for Rule Engine
       description: Returns the available options for the rule engine of a configuration.
       tags:
         - Config
@@ -682,7 +682,7 @@ paths:
   /public/event/{slug}:
     post:
       operationId: triggerEvent
-      summary: Trigger Event
+      summary: Cobalt Trigger Event
       description: >-
         Triggers a webhook event created for your app. The event must first
         be created on your Cobalt dashboard. Events are used to trigger
@@ -740,7 +740,7 @@ paths:
   /public/webhook:
     post:
       operationId: createWebhook
-      summary: Create Webhook
+      summary: Cobalt Create Webhook
       description: >-
         Creates a webhook subscription. Webhooks allow you to receive
         real-time notifications when events occur in Cobalt.
@@ -785,7 +785,7 @@ paths:
           description: Bad request - Missing required parameters.
     get:
       operationId: getWebhook
-      summary: Get Webhook
+      summary: Cobalt Get Webhook
       description: Retrieves the webhook subscription for a linked account.
       tags:
         - Webhooks
@@ -811,7 +811,7 @@ paths:
   /public/webhook/unsubscribe:
     post:
       operationId: unsubscribeWebhook
-      summary: Unsubscribe Webhook Events
+      summary: Cobalt Unsubscribe Webhook Events
       description: Unsubscribes from webhook events for a linked account.
       tags:
         - Webhooks
@@ -842,7 +842,7 @@ paths:
   /public/execution/{execution_id}:
     get:
       operationId: getExecutionById
-      summary: Get Execution by ID
+      summary: Cobalt Get Execution by ID
       description: Retrieves the details of a specific workflow execution.
       tags:
         - Executions
@@ -874,7 +874,7 @@ paths:
   /public/execution:
     get:
       operationId: listExecutions
-      summary: List Executions
+      summary: Cobalt List Executions
       description: Returns a list of workflow executions for a linked account.
       tags:
         - Executions
@@ -900,7 +900,7 @@ paths:
   /public/workflow:
     post:
       operationId: createPublicWorkflow
-      summary: Create Public Workflow
+      summary: Cobalt Create Public Workflow
       description: Creates a new public workflow with the specified nodes.
       tags:
         - Public Workflows
@@ -949,7 +949,7 @@ paths:
   /public/workflow/{workflow_id}/execute:
     post:
       operationId: executeWorkflow
-      summary: Execute Workflow
+      summary: Cobalt Execute Workflow
       description: Executes a specific workflow programmatically.
       tags:
         - Public Workflows
@@ -1032,7 +1032,7 @@ paths:
   /public/datastore:
     get:
       operationId: listConfigDatastores
-      summary: Get All Config Datastores
+      summary: Cobalt Get All Config Datastores
       description: Returns all datastores associated with a configuration.
       tags:
         - Datastores
@@ -1058,7 +1058,7 @@ paths:
   /public/datastore/{datastore_id}/records:
     get:
       operationId: listDatastoreRecords
-      summary: List Records in Datastore
+      summary: Cobalt List Records in Datastore
       description: Returns all records in a specific datastore.
       tags:
         - Datastores
@@ -1092,7 +1092,7 @@ paths:
   /public/datastore/{datastore_id}/search:
     post:
       operationId: searchDatastoreRecords
-      summary: Search Datastore Records
+      summary: Cobalt Search Datastore Records
       description: Searches for records in a specific datastore.
       tags:
         - Datastores
