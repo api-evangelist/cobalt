@@ -1,0 +1,326 @@
+# Naftiko capabilities profile for the Cobalt API.
+# Capabilities map verbs against the high-value operations exposed by the
+# Cobalt embedded integration platform v2 REST API. Each capability links
+# back to the canonical OpenAPI definition in this repo.
+provider: cobalt
+name: Cobalt
+description: >-
+  Cobalt is an embedded integration platform (iPaaS) for SaaS products. These
+  capabilities cover managing linked end-customer accounts, retrieving
+  available applications, configuring per-account integration settings,
+  triggering events into workflows, subscribing to webhooks, executing public
+  workflows, generating hosted portal URLs, and reading datastore records.
+capabilities:
+  - id: cobalt.session.create-token
+    name: Create session token
+    description: Generate a short-lived session token for a linked account.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1session-token/post
+    inputs:
+      - linked_account_id
+    outputs:
+      - token
+
+  - id: cobalt.linked-accounts.list
+    name: List linked accounts
+    description: List end-customer linked accounts for the application.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1linked-account/get
+    inputs:
+      - page
+      - limit
+    outputs:
+      - data
+      - pagination
+
+  - id: cobalt.linked-accounts.create
+    name: Create linked account
+    description: Create a new linked account for an end customer.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1linked-account/post
+    inputs:
+      - linked_account_id
+      - your_app
+    outputs:
+      - linked_account_id
+      - token
+
+  - id: cobalt.linked-accounts.get
+    name: Get linked account
+    description: Retrieve a single linked account by ID.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1linked-account~1{linked_account_id}/get
+    inputs:
+      - linked_account_id
+    outputs:
+      - linked_account_id
+      - applications
+
+  - id: cobalt.linked-accounts.delete
+    name: Delete linked account
+    description: Delete a linked account.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1linked-account~1{linked_account_id}/delete
+    inputs:
+      - linked_account_id
+    outputs:
+      - status
+
+  - id: cobalt.linked-accounts.upsert
+    name: Upsert linked account
+    description: Create or update a linked account in a single call.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1linked-account~1upsert/post
+    inputs:
+      - linked_account_id
+      - your_app
+    outputs:
+      - linked_account_id
+
+  - id: cobalt.linked-accounts.migrate-token
+    name: Migrate linked account token
+    description: Migrate a linked account's auth token to the latest format.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1linked-account~1{linked_account_id}~1migrate-token/post
+    inputs:
+      - linked_account_id
+    outputs:
+      - status
+
+  - id: cobalt.applications.list
+    name: List applications
+    description: List integrations available to the calling app.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1application/get
+    inputs:
+      - page
+      - limit
+    outputs:
+      - data
+      - pagination
+
+  - id: cobalt.applications.get
+    name: Get application by slug
+    description: Retrieve a single application by slug.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1application~1{slug}/get
+    inputs:
+      - slug
+    outputs:
+      - slug
+      - name
+      - auth_type
+
+  - id: cobalt.config.upsert
+    name: Upsert config
+    description: Create or update an integration configuration.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1config/post
+    inputs:
+      - linked_account_id
+      - slug
+      - config
+    outputs:
+      - config_id
+
+  - id: cobalt.config.get
+    name: Get config
+    description: Retrieve an integration configuration by ID.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1config~1{config_id}/get
+    inputs:
+      - config_id
+    outputs:
+      - config_id
+      - slug
+      - status
+
+  - id: cobalt.config.update
+    name: Update config
+    description: Update an existing integration configuration.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1config~1{config_id}/put
+    inputs:
+      - config_id
+      - config
+    outputs:
+      - config_id
+
+  - id: cobalt.config.delete
+    name: Delete config
+    description: Delete an integration configuration.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1config~1{config_id}/delete
+    inputs:
+      - config_id
+    outputs:
+      - status
+
+  - id: cobalt.config.list-installed
+    name: List installed configs
+    description: List configurations installed for the linked account.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1config~1all/get
+    inputs:
+      - linked_account_id
+    outputs:
+      - data
+
+  - id: cobalt.config.get-fields
+    name: Get config fields
+    description: List dynamic fields exposed by a configuration.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1config~1{config_id}~1fields/get
+    inputs:
+      - config_id
+    outputs:
+      - fields
+
+  - id: cobalt.config.field.update
+    name: Update field value
+    description: Update the value of a dynamic configuration field.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1config~1{config_id}~1field~1{field_id}/put
+    inputs:
+      - config_id
+      - field_id
+      - value
+    outputs:
+      - field_id
+
+  - id: cobalt.events.trigger
+    name: Trigger event
+    description: Trigger a Cobalt event by slug to launch matching workflows.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1event~1{slug}/post
+    inputs:
+      - slug
+      - linked_account_id
+      - payload
+    outputs:
+      - execution_id
+
+  - id: cobalt.webhooks.subscribe
+    name: Create webhook
+    description: Subscribe a URL to receive event notifications.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1webhook/post
+    inputs:
+      - url
+      - events
+      - linked_account_id
+    outputs:
+      - webhook_id
+
+  - id: cobalt.webhooks.get
+    name: Get webhook
+    description: Retrieve a webhook subscription by ID.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1webhook/get
+    inputs:
+      - webhook_id
+    outputs:
+      - webhook_id
+      - url
+      - events
+
+  - id: cobalt.webhooks.unsubscribe
+    name: Unsubscribe webhook
+    description: Remove a webhook subscription.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1webhook~1unsubscribe/post
+    inputs:
+      - webhook_id
+    outputs:
+      - status
+
+  - id: cobalt.executions.list
+    name: List executions
+    description: List workflow executions with optional filters.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1execution/get
+    inputs:
+      - linked_account_id
+      - workflow_id
+      - status
+    outputs:
+      - data
+
+  - id: cobalt.executions.get
+    name: Get execution
+    description: Retrieve a single execution by ID.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1execution~1{execution_id}/get
+    inputs:
+      - execution_id
+    outputs:
+      - execution_id
+      - status
+      - logs
+
+  - id: cobalt.workflows.create
+    name: Create public workflow
+    description: Create a publicly callable workflow.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1workflow/post
+    inputs:
+      - name
+      - definition
+    outputs:
+      - workflow_id
+
+  - id: cobalt.workflows.execute
+    name: Execute workflow
+    description: Run a public workflow synchronously or asynchronously.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1workflow~1{workflow_id}~1execute/post
+    inputs:
+      - workflow_id
+      - linked_account_id
+      - payload
+    outputs:
+      - execution_id
+
+  - id: cobalt.hosted.create-portal-url
+    name: Create hosted portal URL
+    description: Generate a Cobalt-hosted portal URL for a linked account.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1cobalt-hosted/post
+    inputs:
+      - linked_account_id
+      - slug
+    outputs:
+      - url
+
+  - id: cobalt.datastore.list
+    name: List config datastores
+    description: List datastores attached to a config.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1datastore/get
+    inputs:
+      - config_id
+    outputs:
+      - data
+
+  - id: cobalt.datastore.list-records
+    name: List datastore records
+    description: List records in a datastore.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1datastore~1{datastore_id}~1records/get
+    inputs:
+      - datastore_id
+      - page
+      - limit
+    outputs:
+      - data
+
+  - id: cobalt.datastore.search-records
+    name: Search datastore records
+    description: Query records in a datastore by filter.
+    api: cobalt:cobalt-api
+    operationRef: openapi/cobalt-api-openapi.yml#/paths/~1public~1datastore~1{datastore_id}~1search/post
+    inputs:
+      - datastore_id
+      - query
+    outputs:
+      - data

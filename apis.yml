@@ -31,7 +31,39 @@ apis:
       - url: json-schema/datastore.json
         type: JSONSchema
       - url: json-ld/cobalt-context.jsonld
-        type: JSONLD
+        type: JSONLDContext
+      - url: rules/cobalt-rules.yml
+        type: SpectralRuleset
+      - url: capabilities/cobalt-api-capabilities.yml
+        type: NaftikoCapabilities
+    x-features:
+      - name: Linked Accounts
+        description: Manage end-customer linked accounts representing each tenant of your SaaS.
+      - name: Applications Catalog
+        description: Browse the 1,000+ third-party applications Cobalt can connect to.
+      - name: Configurations
+        description: Per-linked-account configuration of integration settings and dynamic fields.
+      - name: Events and Webhooks
+        description: Trigger Cobalt events and subscribe to webhooks for real-time notifications.
+      - name: Workflows
+        description: Build, deploy, and execute integration workflows publicly or per-tenant.
+      - name: Executions
+        description: Inspect workflow execution history and logs.
+      - name: Datastores
+        description: Persist integration state with Cobalt-managed datastores.
+      - name: Cobalt Hosted Portal
+        description: Generate hosted portal URLs to embed Cobalt UI for end customers.
+      - name: Session Tokens
+        description: Short-lived tokens to authenticate frontend SDK calls per linked account.
+    x-useCases:
+      - name: Embedded Integrations Marketplace
+        description: Offer customers a turnkey integrations marketplace inside your SaaS product.
+      - name: Per-Tenant Workflow Automation
+        description: Run customer-specific automations across CRM, billing, support, and HR systems.
+      - name: AI Integration Agents
+        description: Use Cobalt's AI capabilities to build agentic workflows over connected SaaS apps.
+      - name: Native Connector Replacement
+        description: Replace dozens of point-to-point connectors with one embedded iPaaS.
     description: >-
       The Cobalt API enables developers to programmatically manage integrations,
       linked accounts, configurations, events, webhooks, executions, public
@@ -47,6 +79,14 @@ type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+  - url: openapi/cobalt-api-openapi.yml
+    type: OpenAPI
+  - url: rules/cobalt-rules.yml
+    type: SpectralRuleset
+  - url: capabilities/cobalt-api-capabilities.yml
+    type: NaftikoCapabilities
+  - url: json-ld/cobalt-context.jsonld
+    type: JSONLDContext
   - url: https://www.gocobalt.io/about-us
     name: Our Story | About Cobalt
     type: About
@@ -1190,7 +1230,7 @@ common:
     name: Use Cases
     type: UseCases
 created: '2025-06-05'
-modified: '2026-03-16'
+modified: '2026-04-26'
 position: Consumer
 description: >-
   Traditional integrations are slow, fragmented, and hinder growth. Cobalt is

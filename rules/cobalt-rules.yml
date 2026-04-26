@@ -1,0 +1,138 @@
+extends:
+  - spectral:oas
+
+# Spectral linting rules tuned for the Cobalt embedded iPaaS API.
+# Validates that OpenAPI specs follow the conventions documented at
+# https://docs.gocobalt.io/api-reference/overview - apiKey-based auth,
+# JSON responses, and resource-oriented /public/* paths under
+# https://api.gocobalt.io/api/v2.
+rules:
+  cobalt-info-contact:
+    description: API contact information must be present.
+    severity: error
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  cobalt-info-license:
+    description: API license must be declared.
+    severity: warn
+    given: "$.info"
+    then:
+      field: license
+      function: truthy
+
+  cobalt-info-terms:
+    description: API termsOfService link should be declared.
+    severity: warn
+    given: "$.info"
+    then:
+      field: termsOfService
+      function: truthy
+
+  cobalt-server-https:
+    description: All server URLs must use HTTPS.
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  cobalt-server-versioned:
+    description: Cobalt server URLs must include /api/v2.
+    severity: warn
+    given: "$.servers[?(@.url && @.url.indexOf('gocobalt.io') > -1)].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "/api/v2$"
+
+  cobalt-apikey-security:
+    description: An apiKey security scheme must be defined.
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      function: truthy
+
+  cobalt-public-path-prefix:
+    description: All Cobalt API paths should live under /public.
+    severity: warn
+    given: "$.paths"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          patternProperties:
+            "^/public/":
+              type: object
+          additionalProperties: false
+
+  cobalt-operation-tags:
+    description: Every operation must declare at least one tag.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          minItems: 1
+
+  cobalt-operation-summary:
+    description: Every operation must include a short summary.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  cobalt-operation-id:
+    description: Every operation must declare a unique operationId.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  cobalt-operation-id-camelcase:
+    description: Operation IDs should be camelCase.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  cobalt-error-responses:
+    description: Mutating operations should declare 4xx error responses.
+    severity: warn
+    given: "$.paths[*][post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: ["400"]
+            - required: ["401"]
+            - required: ["403"]
+            - required: ["404"]
+            - required: ["422"]
+
+  cobalt-pagination-page-limit:
+    description: List endpoints should expose page/limit pagination.
+    severity: info
+    given: "$.paths[?(@property.match(/linked-account$|application$|execution$|records$/))].get.parameters[*].name"
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - page
+          - limit
+          - linked_account_id
+          - workflow_id
+          - status
