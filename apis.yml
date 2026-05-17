@@ -75,7 +75,7 @@ tags:
   - Automation
   - Embedded iPaaS
   - Integrations
-type: Contract
+kind: contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
@@ -1182,7 +1182,7 @@ common:
     description: 'null'
   - url: https://status.gocobalt.io/status/app
     name: Cobalt Status Page
-    type: Status
+    type: StatusPage
     description: 'null'
   - url: https://www.gocobalt.io/sign-up
     name: Sign Up for Cobalt | Simplify SaaS Integrations with Embedded iPaaS
