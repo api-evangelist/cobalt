@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cobalt API — Cobalt Hosted
+  description: 'Cobalt API — Cobalt Hosted. 1 operations. Lead operation: Create Cobalt Hosted Portal URL. Self-contained
+    Naftiko capability covering one Cobalt business surface.'
+  tags:
+  - Cobalt
+  - Cobalt Hosted
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COBALT_API_KEY: COBALT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cobalt-cobalt-hosted
+    baseUri: https://api.gocobalt.io/api/v2
+    description: Cobalt API — Cobalt Hosted business capability. Self-contained, no shared references.
+    resources:
+    - name: public-cobalt-hosted
+      path: /public/cobalt-hosted
+      operations:
+      - name: createhostedportalurl
+        method: POST
+        description: Create Cobalt Hosted Portal URL
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.COBALT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cobalt-cobalt-hosted-rest
+    port: 8080
+    description: REST adapter for Cobalt API — Cobalt Hosted. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/public/cobalt-hosted
+      name: public-cobalt-hosted
+      description: REST surface for public-cobalt-hosted.
+      operations:
+      - method: POST
+        name: createhostedportalurl
+        description: Create Cobalt Hosted Portal URL
+        call: cobalt-cobalt-hosted.createhostedportalurl
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cobalt-cobalt-hosted-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cobalt API — Cobalt Hosted. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-cobalt-hosted-portal-url
+      description: Create Cobalt Hosted Portal URL
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cobalt-cobalt-hosted.createhostedportalurl
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

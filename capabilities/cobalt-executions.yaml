@@ -1,0 +1,131 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cobalt API — Executions
+  description: 'Cobalt API — Executions. 2 operations. Lead operation: Cobalt List Executions. Self-contained Naftiko capability
+    covering one Cobalt business surface.'
+  tags:
+  - Cobalt
+  - Executions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COBALT_API_KEY: COBALT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cobalt-executions
+    baseUri: https://api.gocobalt.io/api/v2
+    description: Cobalt API — Executions business capability. Self-contained, no shared references.
+    resources:
+    - name: public-execution
+      path: /public/execution
+      operations:
+      - name: listexecutions
+        method: GET
+        description: Cobalt List Executions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+    - name: public-execution-execution_id
+      path: /public/execution/{execution_id}
+      operations:
+      - name: getexecutionbyid
+        method: GET
+        description: Cobalt Get Execution by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: execution_id
+          in: path
+          type: string
+          description: The execution ID.
+          required: true
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.COBALT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cobalt-executions-rest
+    port: 8080
+    description: REST adapter for Cobalt API — Executions. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/public/execution
+      name: public-execution
+      description: REST surface for public-execution.
+      operations:
+      - method: GET
+        name: listexecutions
+        description: Cobalt List Executions
+        call: cobalt-executions.listexecutions
+        with:
+          linked_account_id: rest.linked_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/execution/{execution-id}
+      name: public-execution-execution-id
+      description: REST surface for public-execution-execution_id.
+      operations:
+      - method: GET
+        name: getexecutionbyid
+        description: Cobalt Get Execution by ID
+        call: cobalt-executions.getexecutionbyid
+        with:
+          execution_id: rest.execution_id
+          linked_account_id: rest.linked_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cobalt-executions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cobalt API — Executions. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: cobalt-list-executions
+      description: Cobalt List Executions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cobalt-executions.listexecutions
+      with:
+        linked_account_id: tools.linked_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-get-execution-id
+      description: Cobalt Get Execution by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cobalt-executions.getexecutionbyid
+      with:
+        execution_id: tools.execution_id
+        linked_account_id: tools.linked_account_id
+      outputParameters:
+      - type: object
+        mapping: $.

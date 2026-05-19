@@ -1,0 +1,275 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cobalt API — Linked Accounts
+  description: 'Cobalt API — Linked Accounts. 6 operations. Lead operation: Cobalt Get All Linked Accounts. Self-contained
+    Naftiko capability covering one Cobalt business surface.'
+  tags:
+  - Cobalt
+  - Linked Accounts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COBALT_API_KEY: COBALT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cobalt-linked-accounts
+    baseUri: https://api.gocobalt.io/api/v2
+    description: Cobalt API — Linked Accounts business capability. Self-contained, no shared references.
+    resources:
+    - name: public-linked-account
+      path: /public/linked-account
+      operations:
+      - name: listlinkedaccounts
+        method: GET
+        description: Cobalt Get All Linked Accounts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createlinkedaccount
+        method: POST
+        description: Cobalt Create Linked Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: public-linked-account-upsert
+      path: /public/linked-account/upsert
+      operations:
+      - name: upsertlinkedaccount
+        method: POST
+        description: Cobalt Upsert Linked Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: public-linked-account-linked_account_id
+      path: /public/linked-account/{linked_account_id}
+      operations:
+      - name: getlinkedaccount
+        method: GET
+        description: Cobalt Get Linked Account by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: linked_account_id
+          in: path
+          type: string
+          description: The unique identifier of the linked account.
+          required: true
+      - name: deletelinkedaccount
+        method: DELETE
+        description: Cobalt Delete Linked Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: linked_account_id
+          in: path
+          type: string
+          description: The unique identifier of the linked account.
+          required: true
+    - name: public-linked-account-linked_account_id-migrate-token
+      path: /public/linked-account/{linked_account_id}/migrate-token
+      operations:
+      - name: migratetoken
+        method: POST
+        description: Cobalt Migrate Token for Linked Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: linked_account_id
+          in: path
+          type: string
+          description: The unique identifier of the linked account.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.COBALT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cobalt-linked-accounts-rest
+    port: 8080
+    description: REST adapter for Cobalt API — Linked Accounts. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/public/linked-account
+      name: public-linked-account
+      description: REST surface for public-linked-account.
+      operations:
+      - method: GET
+        name: listlinkedaccounts
+        description: Cobalt Get All Linked Accounts
+        call: cobalt-linked-accounts.listlinkedaccounts
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createlinkedaccount
+        description: Cobalt Create Linked Account
+        call: cobalt-linked-accounts.createlinkedaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/linked-account/upsert
+      name: public-linked-account-upsert
+      description: REST surface for public-linked-account-upsert.
+      operations:
+      - method: POST
+        name: upsertlinkedaccount
+        description: Cobalt Upsert Linked Account
+        call: cobalt-linked-accounts.upsertlinkedaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/linked-account/{linked-account-id}
+      name: public-linked-account-linked-account-id
+      description: REST surface for public-linked-account-linked_account_id.
+      operations:
+      - method: GET
+        name: getlinkedaccount
+        description: Cobalt Get Linked Account by ID
+        call: cobalt-linked-accounts.getlinkedaccount
+        with:
+          linked_account_id: rest.linked_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletelinkedaccount
+        description: Cobalt Delete Linked Account
+        call: cobalt-linked-accounts.deletelinkedaccount
+        with:
+          linked_account_id: rest.linked_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/linked-account/{linked-account-id}/migrate-token
+      name: public-linked-account-linked-account-id-migrate-token
+      description: REST surface for public-linked-account-linked_account_id-migrate-token.
+      operations:
+      - method: POST
+        name: migratetoken
+        description: Cobalt Migrate Token for Linked Account
+        call: cobalt-linked-accounts.migratetoken
+        with:
+          linked_account_id: rest.linked_account_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cobalt-linked-accounts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cobalt API — Linked Accounts. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: cobalt-get-all-linked-accounts
+      description: Cobalt Get All Linked Accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cobalt-linked-accounts.listlinkedaccounts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-create-linked-account
+      description: Cobalt Create Linked Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cobalt-linked-accounts.createlinkedaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-upsert-linked-account
+      description: Cobalt Upsert Linked Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cobalt-linked-accounts.upsertlinkedaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-get-linked-account-id
+      description: Cobalt Get Linked Account by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cobalt-linked-accounts.getlinkedaccount
+      with:
+        linked_account_id: tools.linked_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-delete-linked-account
+      description: Cobalt Delete Linked Account
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cobalt-linked-accounts.deletelinkedaccount
+      with:
+        linked_account_id: tools.linked_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-migrate-token-linked-account
+      description: Cobalt Migrate Token for Linked Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cobalt-linked-accounts.migratetoken
+      with:
+        linked_account_id: tools.linked_account_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

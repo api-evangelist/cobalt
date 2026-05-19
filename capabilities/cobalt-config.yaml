@@ -1,0 +1,530 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cobalt API — Config
+  description: 'Cobalt API — Config. 10 operations. Lead operation: Cobalt Upsert Config. Self-contained Naftiko capability
+    covering one Cobalt business surface.'
+  tags:
+  - Cobalt
+  - Config
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COBALT_API_KEY: COBALT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cobalt-config
+    baseUri: https://api.gocobalt.io/api/v2
+    description: Cobalt API — Config business capability. Self-contained, no shared references.
+    resources:
+    - name: public-config
+      path: /public/config
+      operations:
+      - name: upsertconfig
+        method: POST
+        description: Cobalt Upsert Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: public-config-all
+      path: /public/config/all
+      operations:
+      - name: listinstalledconfigs
+        method: GET
+        description: Cobalt Get All Installed Configs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+    - name: public-config-config_id
+      path: /public/config/{config_id}
+      operations:
+      - name: getconfigbyid
+        method: GET
+        description: Cobalt Get Config by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: config_id
+          in: path
+          type: string
+          description: The configuration ID.
+          required: true
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+      - name: updateconfig
+        method: PUT
+        description: Cobalt Update Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: config_id
+          in: path
+          type: string
+          description: The configuration ID.
+          required: true
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteconfig
+        method: DELETE
+        description: Cobalt Delete Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: config_id
+          in: path
+          type: string
+          description: The configuration ID.
+          required: true
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+    - name: public-config-config_id-field-field_id
+      path: /public/config/{config_id}/field/{field_id}
+      operations:
+      - name: getfieldvaluebyid
+        method: GET
+        description: Cobalt Get Field Value by ID in Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: config_id
+          in: path
+          type: string
+          description: The configuration ID.
+          required: true
+        - name: field_id
+          in: path
+          type: string
+          description: The field ID.
+          required: true
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+      - name: updatefieldvaluebyid
+        method: PUT
+        description: Cobalt Update Field Value by ID in Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: config_id
+          in: path
+          type: string
+          description: The configuration ID.
+          required: true
+        - name: field_id
+          in: path
+          type: string
+          description: The field ID.
+          required: true
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletefieldvaluebyid
+        method: DELETE
+        description: Cobalt Delete Field Value by ID in Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: config_id
+          in: path
+          type: string
+          description: The configuration ID.
+          required: true
+        - name: field_id
+          in: path
+          type: string
+          description: The field ID.
+          required: true
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+    - name: public-config-config_id-fields
+      path: /public/config/{config_id}/fields
+      operations:
+      - name: getconfigfields
+        method: GET
+        description: Cobalt Get All Config Fields
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: config_id
+          in: path
+          type: string
+          description: The configuration ID.
+          required: true
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+    - name: public-config-config_id-rule-engine-options
+      path: /public/config/{config_id}/rule-engine/options
+      operations:
+      - name: getruleengineoptions
+        method: GET
+        description: Cobalt Get Options for Rule Engine
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: config_id
+          in: path
+          type: string
+          description: The configuration ID.
+          required: true
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.COBALT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cobalt-config-rest
+    port: 8080
+    description: REST adapter for Cobalt API — Config. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/public/config
+      name: public-config
+      description: REST surface for public-config.
+      operations:
+      - method: POST
+        name: upsertconfig
+        description: Cobalt Upsert Config
+        call: cobalt-config.upsertconfig
+        with:
+          linked_account_id: rest.linked_account_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/config/all
+      name: public-config-all
+      description: REST surface for public-config-all.
+      operations:
+      - method: GET
+        name: listinstalledconfigs
+        description: Cobalt Get All Installed Configs
+        call: cobalt-config.listinstalledconfigs
+        with:
+          linked_account_id: rest.linked_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/config/{config-id}
+      name: public-config-config-id
+      description: REST surface for public-config-config_id.
+      operations:
+      - method: GET
+        name: getconfigbyid
+        description: Cobalt Get Config by ID
+        call: cobalt-config.getconfigbyid
+        with:
+          config_id: rest.config_id
+          linked_account_id: rest.linked_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateconfig
+        description: Cobalt Update Config
+        call: cobalt-config.updateconfig
+        with:
+          config_id: rest.config_id
+          linked_account_id: rest.linked_account_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteconfig
+        description: Cobalt Delete Config
+        call: cobalt-config.deleteconfig
+        with:
+          config_id: rest.config_id
+          linked_account_id: rest.linked_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/config/{config-id}/field/{field-id}
+      name: public-config-config-id-field-field-id
+      description: REST surface for public-config-config_id-field-field_id.
+      operations:
+      - method: GET
+        name: getfieldvaluebyid
+        description: Cobalt Get Field Value by ID in Config
+        call: cobalt-config.getfieldvaluebyid
+        with:
+          config_id: rest.config_id
+          field_id: rest.field_id
+          linked_account_id: rest.linked_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatefieldvaluebyid
+        description: Cobalt Update Field Value by ID in Config
+        call: cobalt-config.updatefieldvaluebyid
+        with:
+          config_id: rest.config_id
+          field_id: rest.field_id
+          linked_account_id: rest.linked_account_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefieldvaluebyid
+        description: Cobalt Delete Field Value by ID in Config
+        call: cobalt-config.deletefieldvaluebyid
+        with:
+          config_id: rest.config_id
+          field_id: rest.field_id
+          linked_account_id: rest.linked_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/config/{config-id}/fields
+      name: public-config-config-id-fields
+      description: REST surface for public-config-config_id-fields.
+      operations:
+      - method: GET
+        name: getconfigfields
+        description: Cobalt Get All Config Fields
+        call: cobalt-config.getconfigfields
+        with:
+          config_id: rest.config_id
+          linked_account_id: rest.linked_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/config/{config-id}/rule-engine/options
+      name: public-config-config-id-rule-engine-options
+      description: REST surface for public-config-config_id-rule-engine-options.
+      operations:
+      - method: GET
+        name: getruleengineoptions
+        description: Cobalt Get Options for Rule Engine
+        call: cobalt-config.getruleengineoptions
+        with:
+          config_id: rest.config_id
+          linked_account_id: rest.linked_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cobalt-config-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cobalt API — Config. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: cobalt-upsert-config
+      description: Cobalt Upsert Config
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cobalt-config.upsertconfig
+      with:
+        linked_account_id: tools.linked_account_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-get-all-installed-configs
+      description: Cobalt Get All Installed Configs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cobalt-config.listinstalledconfigs
+      with:
+        linked_account_id: tools.linked_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-get-config-id
+      description: Cobalt Get Config by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cobalt-config.getconfigbyid
+      with:
+        config_id: tools.config_id
+        linked_account_id: tools.linked_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-update-config
+      description: Cobalt Update Config
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cobalt-config.updateconfig
+      with:
+        config_id: tools.config_id
+        linked_account_id: tools.linked_account_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-delete-config
+      description: Cobalt Delete Config
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cobalt-config.deleteconfig
+      with:
+        config_id: tools.config_id
+        linked_account_id: tools.linked_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-get-field-value-id
+      description: Cobalt Get Field Value by ID in Config
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cobalt-config.getfieldvaluebyid
+      with:
+        config_id: tools.config_id
+        field_id: tools.field_id
+        linked_account_id: tools.linked_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-update-field-value-id
+      description: Cobalt Update Field Value by ID in Config
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cobalt-config.updatefieldvaluebyid
+      with:
+        config_id: tools.config_id
+        field_id: tools.field_id
+        linked_account_id: tools.linked_account_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-delete-field-value-id
+      description: Cobalt Delete Field Value by ID in Config
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cobalt-config.deletefieldvaluebyid
+      with:
+        config_id: tools.config_id
+        field_id: tools.field_id
+        linked_account_id: tools.linked_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-get-all-config-fields
+      description: Cobalt Get All Config Fields
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cobalt-config.getconfigfields
+      with:
+        config_id: tools.config_id
+        linked_account_id: tools.linked_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-get-options-rule-engine
+      description: Cobalt Get Options for Rule Engine
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cobalt-config.getruleengineoptions
+      with:
+        config_id: tools.config_id
+        linked_account_id: tools.linked_account_id
+      outputParameters:
+      - type: object
+        mapping: $.

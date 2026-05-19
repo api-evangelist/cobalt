@@ -1,0 +1,138 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cobalt API — Public Workflows
+  description: 'Cobalt API — Public Workflows. 2 operations. Lead operation: Cobalt Create Public Workflow. Self-contained
+    Naftiko capability covering one Cobalt business surface.'
+  tags:
+  - Cobalt
+  - Public Workflows
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COBALT_API_KEY: COBALT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cobalt-public-workflows
+    baseUri: https://api.gocobalt.io/api/v2
+    description: Cobalt API — Public Workflows business capability. Self-contained, no shared references.
+    resources:
+    - name: public-workflow
+      path: /public/workflow
+      operations:
+      - name: createpublicworkflow
+        method: POST
+        description: Cobalt Create Public Workflow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: public-workflow-workflow_id-execute
+      path: /public/workflow/{workflow_id}/execute
+      operations:
+      - name: executeworkflow
+        method: POST
+        description: Cobalt Execute Workflow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: workflow_id
+          in: path
+          type: string
+          description: The workflow ID.
+          required: true
+        - name: linked_account_id
+          in: header
+          type: string
+          description: The linked account ID.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.COBALT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cobalt-public-workflows-rest
+    port: 8080
+    description: REST adapter for Cobalt API — Public Workflows. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/public/workflow
+      name: public-workflow
+      description: REST surface for public-workflow.
+      operations:
+      - method: POST
+        name: createpublicworkflow
+        description: Cobalt Create Public Workflow
+        call: cobalt-public-workflows.createpublicworkflow
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/workflow/{workflow-id}/execute
+      name: public-workflow-workflow-id-execute
+      description: REST surface for public-workflow-workflow_id-execute.
+      operations:
+      - method: POST
+        name: executeworkflow
+        description: Cobalt Execute Workflow
+        call: cobalt-public-workflows.executeworkflow
+        with:
+          workflow_id: rest.workflow_id
+          linked_account_id: rest.linked_account_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cobalt-public-workflows-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cobalt API — Public Workflows. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: cobalt-create-public-workflow
+      description: Cobalt Create Public Workflow
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cobalt-public-workflows.createpublicworkflow
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cobalt-execute-workflow
+      description: Cobalt Execute Workflow
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cobalt-public-workflows.executeworkflow
+      with:
+        workflow_id: tools.workflow_id
+        linked_account_id: tools.linked_account_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
