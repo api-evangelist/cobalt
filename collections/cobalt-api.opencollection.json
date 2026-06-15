@@ -1,0 +1,787 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cobalt API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Session Token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Generate Token for Linked Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/session-token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a session token for a linked account. Session tokens expire in 24 hours and are used to authenticate client-side SDK calls."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Linked Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Get All Linked Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account"
+          },
+          "docs": "Returns a list of all linked accounts."
+        },
+        {
+          "info": {
+            "name": "Cobalt Create Linked Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new linked account. Linked accounts represent your end-customers on whose behalf you call the Cobalt APIs."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get Linked Account by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account/:linked_account_id",
+            "params": [
+              {
+                "name": "linked_account_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the linked account."
+              }
+            ]
+          },
+          "docs": "Returns a linked account by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Cobalt Delete Linked Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account/:linked_account_id",
+            "params": [
+              {
+                "name": "linked_account_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the linked account."
+              }
+            ]
+          },
+          "docs": "Deletes a linked account by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Cobalt Upsert Linked Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account/upsert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates a linked account. If the linked account exists, it will be updated; otherwise a new one will be created."
+        },
+        {
+          "info": {
+            "name": "Cobalt Migrate Token for Linked Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account/:linked_account_id/migrate-token",
+            "params": [
+              {
+                "name": "linked_account_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the linked account."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Migrates authentication tokens for a linked account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Get All Applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/application",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns all enabled applications. If a linked_account_id header is provided, returns applications specific to that linked account."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get Application by Slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/application/:slug",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "The application slug identifier."
+              }
+            ]
+          },
+          "docs": "Returns application details for the specified application slug."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Upsert Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/config",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new configuration or returns the existing one for the specified linked account and application. Configs store customizations for each integration of your end-customers."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get Config by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              }
+            ]
+          },
+          "docs": "Returns a configuration by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Cobalt Update Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing configuration with fields and workflows."
+        },
+        {
+          "info": {
+            "name": "Cobalt Delete Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              }
+            ]
+          },
+          "docs": "Deletes a configuration by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get All Installed Configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/config/all",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns all installed configurations for a linked account."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get All Config Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id/fields",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              }
+            ]
+          },
+          "docs": "Returns all fields for a specific configuration."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get Field Value by ID in Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id/field/:field_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              },
+              {
+                "name": "field_id",
+                "value": "",
+                "type": "path",
+                "description": "The field ID."
+              }
+            ]
+          },
+          "docs": "Returns a specific field value from a configuration."
+        },
+        {
+          "info": {
+            "name": "Cobalt Update Field Value by ID in Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id/field/:field_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              },
+              {
+                "name": "field_id",
+                "value": "",
+                "type": "path",
+                "description": "The field ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a specific field value in a configuration."
+        },
+        {
+          "info": {
+            "name": "Cobalt Delete Field Value by ID in Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id/field/:field_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              },
+              {
+                "name": "field_id",
+                "value": "",
+                "type": "path",
+                "description": "The field ID."
+              }
+            ]
+          },
+          "docs": "Deletes a specific field value from a configuration."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get Options for Rule Engine",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id/rule-engine/options",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              }
+            ]
+          },
+          "docs": "Returns the available options for the rule engine of a configuration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Trigger Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/event/:slug",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "The event slug identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers a webhook event created for your app. The event must first be created on your Cobalt dashboard. Events are used to trigger workflows in Cobalt."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Get Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/webhook",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieves the webhook subscription for a linked account."
+        },
+        {
+          "info": {
+            "name": "Cobalt Create Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/webhook",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a webhook subscription. Webhooks allow you to receive real-time notifications when events occur in Cobalt."
+        },
+        {
+          "info": {
+            "name": "Cobalt Unsubscribe Webhook Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/webhook/unsubscribe",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unsubscribes from webhook events for a linked account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Executions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Get Execution by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/execution/:execution_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "execution_id",
+                "value": "",
+                "type": "path",
+                "description": "The execution ID."
+              }
+            ]
+          },
+          "docs": "Retrieves the details of a specific workflow execution."
+        },
+        {
+          "info": {
+            "name": "Cobalt List Executions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/execution",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns a list of workflow executions for a linked account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Public Workflows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Create Public Workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/workflow",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new public workflow with the specified nodes."
+        },
+        {
+          "info": {
+            "name": "Cobalt Execute Workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/workflow/:workflow_id/execute",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path",
+                "description": "The workflow ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a specific workflow programmatically."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cobalt Hosted",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Cobalt Hosted Portal URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/cobalt-hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a hosted portal URL for a linked account, enabling end-customers to manage their integrations through a Cobalt-hosted interface."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Datastores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Get All Config Datastores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/datastore",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns all datastores associated with a configuration."
+        },
+        {
+          "info": {
+            "name": "Cobalt List Records in Datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/datastore/:datastore_id/records",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastore_id",
+                "value": "",
+                "type": "path",
+                "description": "The datastore ID."
+              }
+            ]
+          },
+          "docs": "Returns all records in a specific datastore."
+        },
+        {
+          "info": {
+            "name": "Cobalt Search Datastore Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/datastore/:datastore_id/search",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastore_id",
+                "value": "",
+                "type": "path",
+                "description": "The datastore ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches for records in a specific datastore."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
