@@ -1148,7 +1148,7 @@ common:
     description: 'null'
   - url: https://docs.gocobalt.io/build/workflow/overview
     name: Overview - Cobalt
-    type: Workflows
+    type: Workflow
     description: 'null'
   - url: https://docs.gocobalt.io/governance/overview
     name: Security - Cobalt
@@ -1184,7 +1184,7 @@ common:
     description: 'null'
   - url: https://www.gocobalt.io/sign-up
     name: Sign Up for Cobalt | Simplify SaaS Integrations with Embedded iPaaS
-    type: SignUp
+    type: Signup
     description: 'null'
   - url: https://app.gocobalt.io/login
     name: Cobalt | Login
