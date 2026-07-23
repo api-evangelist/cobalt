@@ -1,0 +1,223 @@
+openapi: 3.1.0
+info:
+  title: Cobalt Applications Linked Accounts API
+  description: The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.
+  version: 2.0.0
+  contact:
+    name: Cobalt Support
+    url: https://www.gocobalt.io/
+  termsOfService: https://docs.gocobalt.io/governance/terms-of-use
+  license:
+    name: Proprietary
+    url: https://docs.gocobalt.io/governance/terms-of-use
+servers:
+- url: https://api.gocobalt.io/api/v2
+  description: Cobalt Production API
+security:
+- apiKey: []
+tags:
+- name: Linked Accounts
+  description: Manage linked accounts representing your end-customers.
+paths:
+  /public/linked-account:
+    get:
+      operationId: listLinkedAccounts
+      summary: Cobalt Get All Linked Accounts
+      description: Returns a list of all linked accounts.
+      tags:
+      - Linked Accounts
+      responses:
+        '200':
+          description: List of linked accounts retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LinkedAccount'
+        '401':
+          description: Unauthorized - Invalid API key.
+    post:
+      operationId: createLinkedAccount
+      summary: Cobalt Create Linked Account
+      description: Creates a new linked account. Linked accounts represent your end-customers on whose behalf you call the Cobalt APIs.
+      tags:
+      - Linked Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - linked_account_id
+              properties:
+                linked_account_id:
+                  type: string
+                  description: The unique identifier for the linked account.
+                name:
+                  type: string
+                  description: Display name for the linked account.
+                your_app:
+                  type: object
+                  description: Custom metadata about the linked account.
+      responses:
+        '200':
+          description: Linked account created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedAccount'
+        '401':
+          description: Unauthorized - Invalid API key.
+        '400':
+          description: Bad request - Missing required parameters.
+  /public/linked-account/{linked_account_id}:
+    get:
+      operationId: getLinkedAccount
+      summary: Cobalt Get Linked Account by ID
+      description: Returns a linked account by its unique identifier.
+      tags:
+      - Linked Accounts
+      parameters:
+      - name: linked_account_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The unique identifier of the linked account.
+      responses:
+        '200':
+          description: Linked account retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedAccount'
+        '404':
+          description: Linked account not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+    delete:
+      operationId: deleteLinkedAccount
+      summary: Cobalt Delete Linked Account
+      description: Deletes a linked account by its unique identifier.
+      tags:
+      - Linked Accounts
+      parameters:
+      - name: linked_account_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The unique identifier of the linked account.
+      responses:
+        '200':
+          description: Linked account deleted successfully.
+        '404':
+          description: Linked account not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+  /public/linked-account/upsert:
+    post:
+      operationId: upsertLinkedAccount
+      summary: Cobalt Upsert Linked Account
+      description: Creates or updates a linked account. If the linked account exists, it will be updated; otherwise a new one will be created.
+      tags:
+      - Linked Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - linked_account_id
+              properties:
+                linked_account_id:
+                  type: string
+                  description: The unique identifier for the linked account.
+                name:
+                  type: string
+                  description: Display name for the linked account.
+                your_app:
+                  type: object
+                  description: Custom metadata about the linked account.
+      responses:
+        '200':
+          description: Linked account upserted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedAccount'
+        '401':
+          description: Unauthorized - Invalid API key.
+  /public/linked-account/{linked_account_id}/migrate-token:
+    post:
+      operationId: migrateToken
+      summary: Cobalt Migrate Token for Linked Account
+      description: Migrates authentication tokens for a linked account.
+      tags:
+      - Linked Accounts
+      parameters:
+      - name: linked_account_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The unique identifier of the linked account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: The application slug.
+                token:
+                  type: object
+                  description: The token data to migrate.
+      responses:
+        '200':
+          description: Token migrated successfully.
+        '401':
+          description: Unauthorized - Invalid API key.
+        '400':
+          description: Bad request.
+components:
+  schemas:
+    LinkedAccount:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Internal identifier.
+        linked_account_id:
+          type: string
+          description: The unique identifier for the linked account.
+        name:
+          type: string
+          description: Display name.
+        your_app:
+          type: object
+          description: Custom metadata.
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp.
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication. Found in Cobalt dashboard under Settings > Developer > Setup tab.
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Session token generated via the Session Token endpoint.

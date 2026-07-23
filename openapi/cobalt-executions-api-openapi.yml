@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: Cobalt Applications Executions API
+  description: The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.
+  version: 2.0.0
+  contact:
+    name: Cobalt Support
+    url: https://www.gocobalt.io/
+  termsOfService: https://docs.gocobalt.io/governance/terms-of-use
+  license:
+    name: Proprietary
+    url: https://docs.gocobalt.io/governance/terms-of-use
+servers:
+- url: https://api.gocobalt.io/api/v2
+  description: Cobalt Production API
+security:
+- apiKey: []
+tags:
+- name: Executions
+  description: Retrieve details about workflow executions.
+paths:
+  /public/execution/{execution_id}:
+    get:
+      operationId: getExecutionById
+      summary: Cobalt Get Execution by ID
+      description: Retrieves the details of a specific workflow execution.
+      tags:
+      - Executions
+      parameters:
+      - name: execution_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The execution ID.
+      - name: linked_account_id
+        in: header
+        required: true
+        schema:
+          type: string
+        description: The linked account ID.
+      responses:
+        '200':
+          description: Execution details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Execution'
+        '404':
+          description: Execution not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+  /public/execution:
+    get:
+      operationId: listExecutions
+      summary: Cobalt List Executions
+      description: Returns a list of workflow executions for a linked account.
+      tags:
+      - Executions
+      parameters:
+      - name: linked_account_id
+        in: header
+        required: true
+        schema:
+          type: string
+        description: The linked account ID.
+      responses:
+        '200':
+          description: List of executions retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Execution'
+        '401':
+          description: Unauthorized - Invalid API key.
+components:
+  schemas:
+    Execution:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Execution ID.
+        workflow_id:
+          type: string
+          description: The workflow that was executed.
+        linked_account_id:
+          type: string
+          description: The linked account ID.
+        status:
+          type: string
+          enum:
+          - pending
+          - running
+          - completed
+          - failed
+          description: Execution status.
+        started_at:
+          type: string
+          format: date-time
+          description: Execution start timestamp.
+        completed_at:
+          type: string
+          format: date-time
+          description: Execution completion timestamp.
+        logs:
+          type: array
+          items:
+            type: object
+          description: Execution logs.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication. Found in Cobalt dashboard under Settings > Developer > Setup tab.
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Session token generated via the Session Token endpoint.

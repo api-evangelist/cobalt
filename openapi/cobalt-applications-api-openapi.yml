@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: Cobalt Applications API
+  description: The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.
+  version: 2.0.0
+  contact:
+    name: Cobalt Support
+    url: https://www.gocobalt.io/
+  termsOfService: https://docs.gocobalt.io/governance/terms-of-use
+  license:
+    name: Proprietary
+    url: https://docs.gocobalt.io/governance/terms-of-use
+servers:
+- url: https://api.gocobalt.io/api/v2
+  description: Cobalt Production API
+security:
+- apiKey: []
+tags:
+- name: Applications
+  description: Retrieve details about enabled applications.
+paths:
+  /public/application:
+    get:
+      operationId: listApplications
+      summary: Cobalt Get All Applications
+      description: Returns all enabled applications. If a linked_account_id header is provided, returns applications specific to that linked account.
+      tags:
+      - Applications
+      parameters:
+      - name: linked_account_id
+        in: header
+        schema:
+          type: string
+        description: Optional linked account ID to filter applications.
+      responses:
+        '200':
+          description: List of applications retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Application'
+        '401':
+          description: Unauthorized - Invalid API key.
+  /public/application/{slug}:
+    get:
+      operationId: getApplicationBySlug
+      summary: Cobalt Get Application by Slug
+      description: Returns application details for the specified application slug.
+      tags:
+      - Applications
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The application slug identifier.
+      - name: linked_account_id
+        in: header
+        schema:
+          type: string
+        description: Optional linked account ID for context.
+      responses:
+        '200':
+          description: Application retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '404':
+          description: Application not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+components:
+  schemas:
+    Application:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Application name.
+        slug:
+          type: string
+          description: Application slug identifier.
+        icon:
+          type: string
+          description: Application icon URL.
+        description:
+          type: string
+          description: Application description.
+        auth_type:
+          type: string
+          description: Authentication type (e.g., oauth2, api_key).
+        connected:
+          type: boolean
+          description: Whether the application is connected for the linked account.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication. Found in Cobalt dashboard under Settings > Developer > Setup tab.
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Session token generated via the Session Token endpoint.

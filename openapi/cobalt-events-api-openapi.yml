@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: Cobalt Applications Events API
+  description: The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.
+  version: 2.0.0
+  contact:
+    name: Cobalt Support
+    url: https://www.gocobalt.io/
+  termsOfService: https://docs.gocobalt.io/governance/terms-of-use
+  license:
+    name: Proprietary
+    url: https://docs.gocobalt.io/governance/terms-of-use
+servers:
+- url: https://api.gocobalt.io/api/v2
+  description: Cobalt Production API
+security:
+- apiKey: []
+tags:
+- name: Events
+  description: Trigger events to initiate workflows.
+paths:
+  /public/event/{slug}:
+    post:
+      operationId: triggerEvent
+      summary: Cobalt Trigger Event
+      description: Triggers a webhook event created for your app. The event must first be created on your Cobalt dashboard. Events are used to trigger workflows in Cobalt.
+      tags:
+      - Events
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The event slug identifier.
+      - name: linked_account_id
+        in: header
+        required: true
+        schema:
+          type: string
+        description: The linked account ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - event
+              properties:
+                event:
+                  type: string
+                  description: The event name to trigger.
+                config_id:
+                  type: string
+                  description: Optional configuration ID.
+                payload:
+                  type: object
+                  description: Optional payload data to pass to the event.
+      responses:
+        '200':
+          description: Event triggered successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  execution_id:
+                    type: string
+        '404':
+          description: Event not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication. Found in Cobalt dashboard under Settings > Developer > Setup tab.
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Session token generated via the Session Token endpoint.

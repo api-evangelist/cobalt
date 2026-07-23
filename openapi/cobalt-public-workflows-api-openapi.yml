@@ -1,0 +1,155 @@
+openapi: 3.1.0
+info:
+  title: Cobalt Applications Public Workflows API
+  description: The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.
+  version: 2.0.0
+  contact:
+    name: Cobalt Support
+    url: https://www.gocobalt.io/
+  termsOfService: https://docs.gocobalt.io/governance/terms-of-use
+  license:
+    name: Proprietary
+    url: https://docs.gocobalt.io/governance/terms-of-use
+servers:
+- url: https://api.gocobalt.io/api/v2
+  description: Cobalt Production API
+security:
+- apiKey: []
+tags:
+- name: Public Workflows
+  description: Create and manage public workflows.
+paths:
+  /public/workflow:
+    post:
+      operationId: createPublicWorkflow
+      summary: Cobalt Create Public Workflow
+      description: Creates a new public workflow with the specified nodes.
+      tags:
+      - Public Workflows
+      security:
+      - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - nodes
+              properties:
+                name:
+                  type: string
+                  description: The name of the workflow.
+                description:
+                  type: string
+                  description: A description of the workflow.
+                nodes:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        description: The node type (e.g., start, ai_code_executor).
+                      config:
+                        type: object
+                        description: Node configuration.
+                  description: Array of workflow nodes.
+      responses:
+        '200':
+          description: Public workflow created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicWorkflow'
+        '401':
+          description: Unauthorized - Invalid session token.
+        '400':
+          description: Bad request.
+  /public/workflow/{workflow_id}/execute:
+    post:
+      operationId: executeWorkflow
+      summary: Cobalt Execute Workflow
+      description: Executes a specific workflow programmatically.
+      tags:
+      - Public Workflows
+      parameters:
+      - name: workflow_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The workflow ID.
+      - name: linked_account_id
+        in: header
+        required: true
+        schema:
+          type: string
+        description: The linked account ID.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+                  description: Optional payload to pass to the workflow.
+      responses:
+        '200':
+          description: Workflow execution initiated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  execution_id:
+                    type: string
+                  status:
+                    type: string
+        '404':
+          description: Workflow not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+components:
+  schemas:
+    PublicWorkflow:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Workflow ID.
+        name:
+          type: string
+          description: Workflow name.
+        description:
+          type: string
+          description: Workflow description.
+        nodes:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              config:
+                type: object
+          description: Workflow nodes.
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication. Found in Cobalt dashboard under Settings > Developer > Setup tab.
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Session token generated via the Session Token endpoint.

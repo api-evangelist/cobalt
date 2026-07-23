@@ -1,0 +1,66 @@
+openapi: 3.1.0
+info:
+  title: Cobalt Applications Cobalt Hosted API
+  description: The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.
+  version: 2.0.0
+  contact:
+    name: Cobalt Support
+    url: https://www.gocobalt.io/
+  termsOfService: https://docs.gocobalt.io/governance/terms-of-use
+  license:
+    name: Proprietary
+    url: https://docs.gocobalt.io/governance/terms-of-use
+servers:
+- url: https://api.gocobalt.io/api/v2
+  description: Cobalt Production API
+security:
+- apiKey: []
+tags:
+- name: Cobalt Hosted
+  description: Generate hosted portal URLs for linked accounts.
+paths:
+  /public/cobalt-hosted:
+    post:
+      operationId: createHostedPortalUrl
+      summary: Create Cobalt Hosted Portal URL
+      description: Generates a hosted portal URL for a linked account, enabling end-customers to manage their integrations through a Cobalt-hosted interface.
+      tags:
+      - Cobalt Hosted
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - linked_account_id
+              properties:
+                linked_account_id:
+                  type: string
+                  description: The linked account ID.
+      responses:
+        '200':
+          description: Hosted portal URL generated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    format: uri
+                    description: The hosted portal URL.
+        '401':
+          description: Unauthorized - Invalid API key.
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication. Found in Cobalt dashboard under Settings > Developer > Setup tab.
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Session token generated via the Session Token endpoint.

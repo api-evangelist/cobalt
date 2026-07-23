@@ -1,0 +1,150 @@
+openapi: 3.1.0
+info:
+  title: Cobalt Applications Webhooks API
+  description: The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.
+  version: 2.0.0
+  contact:
+    name: Cobalt Support
+    url: https://www.gocobalt.io/
+  termsOfService: https://docs.gocobalt.io/governance/terms-of-use
+  license:
+    name: Proprietary
+    url: https://docs.gocobalt.io/governance/terms-of-use
+servers:
+- url: https://api.gocobalt.io/api/v2
+  description: Cobalt Production API
+security:
+- apiKey: []
+tags:
+- name: Webhooks
+  description: Subscribe to real-time notifications when events occur in Cobalt.
+paths:
+  /public/webhook:
+    post:
+      operationId: createWebhook
+      summary: Cobalt Create Webhook
+      description: Creates a webhook subscription. Webhooks allow you to receive real-time notifications when events occur in Cobalt.
+      tags:
+      - Webhooks
+      parameters:
+      - name: linked_account_id
+        in: header
+        required: true
+        schema:
+          type: string
+        description: The linked account ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - webhook_url
+              - webhook_events
+              properties:
+                webhook_url:
+                  type: string
+                  format: uri
+                  description: The URL to receive webhook notifications.
+                webhook_events:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of event names to subscribe to.
+      responses:
+        '200':
+          description: Webhook created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '401':
+          description: Unauthorized - Invalid API key.
+        '400':
+          description: Bad request - Missing required parameters.
+    get:
+      operationId: getWebhook
+      summary: Cobalt Get Webhook
+      description: Retrieves the webhook subscription for a linked account.
+      tags:
+      - Webhooks
+      parameters:
+      - name: linked_account_id
+        in: header
+        required: true
+        schema:
+          type: string
+        description: The linked account ID.
+      responses:
+        '200':
+          description: Webhook retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '404':
+          description: Webhook not found.
+        '401':
+          description: Unauthorized - Invalid API key.
+  /public/webhook/unsubscribe:
+    post:
+      operationId: unsubscribeWebhook
+      summary: Cobalt Unsubscribe Webhook Events
+      description: Unsubscribes from webhook events for a linked account.
+      tags:
+      - Webhooks
+      parameters:
+      - name: linked_account_id
+        in: header
+        required: true
+        schema:
+          type: string
+        description: The linked account ID.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webhook_events:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of event names to unsubscribe from.
+      responses:
+        '200':
+          description: Webhook events unsubscribed successfully.
+        '401':
+          description: Unauthorized - Invalid API key.
+components:
+  schemas:
+    Webhook:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Webhook ID.
+        webhook_url:
+          type: string
+          format: uri
+          description: The webhook notification URL.
+        webhook_events:
+          type: array
+          items:
+            type: string
+          description: Subscribed event names.
+        linked_account_id:
+          type: string
+          description: The linked account ID.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication. Found in Cobalt dashboard under Settings > Developer > Setup tab.
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Session token generated via the Session Token endpoint.
