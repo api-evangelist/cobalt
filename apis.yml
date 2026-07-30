@@ -1,80 +1,330 @@
 aid: cobalt
 url: https://raw.githubusercontent.com/api-evangelist/cobalt/refs/heads/main/apis.yml
 apis:
-  - aid: cobalt:cobalt-api
-    name: Cobalt API
-    tags:
-      - Automation
-      - Embedded SaaS Integration
-      - Integrations
-      - iPaaS
-    humanURL: https://docs.gocobalt.io/api-reference/overview
-    baseURL: https://api.gocobalt.io/api/v2
-    properties:
-      - url: https://docs.gocobalt.io/api-reference/overview
-        type: Documentation
-      - url: openapi/cobalt-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/linked-account.json
-        type: JSONSchema
-      - url: json-schema/application.json
-        type: JSONSchema
-      - url: json-schema/config.json
-        type: JSONSchema
-      - url: json-schema/webhook.json
-        type: JSONSchema
-      - url: json-schema/execution.json
-        type: JSONSchema
-      - url: json-schema/workflow.json
-        type: JSONSchema
-      - url: json-schema/datastore.json
-        type: JSONSchema
-      - url: json-ld/cobalt-context.jsonld
-        type: JSONLDContext
-      - url: rules/cobalt-rules.yml
-        type: SpectralRuleset
-    x-features:
-      - name: Linked Accounts
-        description: Manage end-customer linked accounts representing each tenant of your SaaS.
-      - name: Applications Catalog
-        description: Browse the 1,000+ third-party applications Cobalt can connect to.
-      - name: Configurations
-        description: Per-linked-account configuration of integration settings and dynamic fields.
-      - name: Events and Webhooks
-        description: Trigger Cobalt events and subscribe to webhooks for real-time notifications.
-      - name: Workflows
-        description: Build, deploy, and execute integration workflows publicly or per-tenant.
-      - name: Executions
-        description: Inspect workflow execution history and logs.
-      - name: Datastores
-        description: Persist integration state with Cobalt-managed datastores.
-      - name: Cobalt Hosted Portal
-        description: Generate hosted portal URLs to embed Cobalt UI for end customers.
-      - name: Session Tokens
-        description: Short-lived tokens to authenticate frontend SDK calls per linked account.
-    x-useCases:
-      - name: Embedded Integrations Marketplace
-        description: Offer customers a turnkey integrations marketplace inside your SaaS product.
-      - name: Per-Tenant Workflow Automation
-        description: Run customer-specific automations across CRM, billing, support, and HR systems.
-      - name: AI Integration Agents
-        description: Use Cobalt's AI capabilities to build agentic workflows over connected SaaS apps.
-      - name: Native Connector Replacement
-        description: Replace dozens of point-to-point connectors with one embedded iPaaS.
-    description: >-
-      The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations,
-      events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform.
-      Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them
-      with the help of AI agents.
+- aid: cobalt:cobalt-applications-api
+  name: Cobalt Applications API
+  description: Retrieve details about enabled applications.
+  humanURL: https://docs.gocobalt.io/api-reference/overview
+  baseURL: https://api.gocobalt.io/api/v2
+  tags:
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/cobalt-applications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gocobalt.io/api-reference/overview
+  - type: JSONSchema
+    url: json-schema/linked-account.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/config.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/execution.json
+  - type: JSONSchema
+    url: json-schema/workflow.json
+  - type: JSONSchema
+    url: json-schema/datastore.json
+  - type: JSONLDContext
+    url: json-ld/cobalt-context.jsonld
+  - type: SpectralRuleset
+    url: rules/cobalt-rules.yml
+- aid: cobalt:cobalt-cobalt-hosted-api
+  name: Cobalt Cobalt Hosted API
+  description: Generate hosted portal URLs for linked accounts.
+  humanURL: https://docs.gocobalt.io/api-reference/overview
+  baseURL: https://api.gocobalt.io/api/v2
+  tags:
+  - Cobalt Hosted
+  properties:
+  - type: OpenAPI
+    url: openapi/cobalt-cobalt-hosted-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gocobalt.io/api-reference/overview
+  - type: JSONSchema
+    url: json-schema/linked-account.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/config.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/execution.json
+  - type: JSONSchema
+    url: json-schema/workflow.json
+  - type: JSONSchema
+    url: json-schema/datastore.json
+  - type: JSONLDContext
+    url: json-ld/cobalt-context.jsonld
+  - type: SpectralRuleset
+    url: rules/cobalt-rules.yml
+- aid: cobalt:cobalt-config-api
+  name: Cobalt Config API
+  description: Manage integration configurations for linked accounts.
+  humanURL: https://docs.gocobalt.io/api-reference/overview
+  baseURL: https://api.gocobalt.io/api/v2
+  tags:
+  - Config
+  properties:
+  - type: OpenAPI
+    url: openapi/cobalt-config-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gocobalt.io/api-reference/overview
+  - type: JSONSchema
+    url: json-schema/linked-account.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/config.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/execution.json
+  - type: JSONSchema
+    url: json-schema/workflow.json
+  - type: JSONSchema
+    url: json-schema/datastore.json
+  - type: JSONLDContext
+    url: json-ld/cobalt-context.jsonld
+  - type: SpectralRuleset
+    url: rules/cobalt-rules.yml
+- aid: cobalt:cobalt-datastores-api
+  name: Cobalt Datastores API
+  description: Manage datastores and their records.
+  humanURL: https://docs.gocobalt.io/api-reference/overview
+  baseURL: https://api.gocobalt.io/api/v2
+  tags:
+  - Datastores
+  properties:
+  - type: OpenAPI
+    url: openapi/cobalt-datastores-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gocobalt.io/api-reference/overview
+  - type: JSONSchema
+    url: json-schema/linked-account.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/config.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/execution.json
+  - type: JSONSchema
+    url: json-schema/workflow.json
+  - type: JSONSchema
+    url: json-schema/datastore.json
+  - type: JSONLDContext
+    url: json-ld/cobalt-context.jsonld
+  - type: SpectralRuleset
+    url: rules/cobalt-rules.yml
+- aid: cobalt:cobalt-events-api
+  name: Cobalt Events API
+  description: Trigger events to initiate workflows.
+  humanURL: https://docs.gocobalt.io/api-reference/overview
+  baseURL: https://api.gocobalt.io/api/v2
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/cobalt-events-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gocobalt.io/api-reference/overview
+  - type: JSONSchema
+    url: json-schema/linked-account.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/config.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/execution.json
+  - type: JSONSchema
+    url: json-schema/workflow.json
+  - type: JSONSchema
+    url: json-schema/datastore.json
+  - type: JSONLDContext
+    url: json-ld/cobalt-context.jsonld
+  - type: SpectralRuleset
+    url: rules/cobalt-rules.yml
+- aid: cobalt:cobalt-executions-api
+  name: Cobalt Executions API
+  description: Retrieve details about workflow executions.
+  humanURL: https://docs.gocobalt.io/api-reference/overview
+  baseURL: https://api.gocobalt.io/api/v2
+  tags:
+  - Executions
+  properties:
+  - type: OpenAPI
+    url: openapi/cobalt-executions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gocobalt.io/api-reference/overview
+  - type: JSONSchema
+    url: json-schema/linked-account.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/config.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/execution.json
+  - type: JSONSchema
+    url: json-schema/workflow.json
+  - type: JSONSchema
+    url: json-schema/datastore.json
+  - type: JSONLDContext
+    url: json-ld/cobalt-context.jsonld
+  - type: SpectralRuleset
+    url: rules/cobalt-rules.yml
+- aid: cobalt:cobalt-linked-accounts-api
+  name: Cobalt Linked Accounts API
+  description: Manage linked accounts representing your end-customers.
+  humanURL: https://docs.gocobalt.io/api-reference/overview
+  baseURL: https://api.gocobalt.io/api/v2
+  tags:
+  - Linked Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/cobalt-linked-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gocobalt.io/api-reference/overview
+  - type: JSONSchema
+    url: json-schema/linked-account.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/config.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/execution.json
+  - type: JSONSchema
+    url: json-schema/workflow.json
+  - type: JSONSchema
+    url: json-schema/datastore.json
+  - type: JSONLDContext
+    url: json-ld/cobalt-context.jsonld
+  - type: SpectralRuleset
+    url: rules/cobalt-rules.yml
+- aid: cobalt:cobalt-public-workflows-api
+  name: Cobalt Public Workflows API
+  description: Create and manage public workflows.
+  humanURL: https://docs.gocobalt.io/api-reference/overview
+  baseURL: https://api.gocobalt.io/api/v2
+  tags:
+  - Public Workflows
+  properties:
+  - type: OpenAPI
+    url: openapi/cobalt-public-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gocobalt.io/api-reference/overview
+  - type: JSONSchema
+    url: json-schema/linked-account.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/config.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/execution.json
+  - type: JSONSchema
+    url: json-schema/workflow.json
+  - type: JSONSchema
+    url: json-schema/datastore.json
+  - type: JSONLDContext
+    url: json-ld/cobalt-context.jsonld
+  - type: SpectralRuleset
+    url: rules/cobalt-rules.yml
+- aid: cobalt:cobalt-session-token-api
+  name: Cobalt Session Token API
+  description: Generate session tokens for linked account authentication.
+  humanURL: https://docs.gocobalt.io/api-reference/overview
+  baseURL: https://api.gocobalt.io/api/v2
+  tags:
+  - Session Token
+  properties:
+  - type: OpenAPI
+    url: openapi/cobalt-session-token-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gocobalt.io/api-reference/overview
+  - type: JSONSchema
+    url: json-schema/linked-account.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/config.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/execution.json
+  - type: JSONSchema
+    url: json-schema/workflow.json
+  - type: JSONSchema
+    url: json-schema/datastore.json
+  - type: JSONLDContext
+    url: json-ld/cobalt-context.jsonld
+  - type: SpectralRuleset
+    url: rules/cobalt-rules.yml
+- aid: cobalt:cobalt-webhooks-api
+  name: Cobalt Webhooks API
+  description: Subscribe to real-time notifications when events occur in Cobalt.
+  humanURL: https://docs.gocobalt.io/api-reference/overview
+  baseURL: https://api.gocobalt.io/api/v2
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/cobalt-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gocobalt.io/api-reference/overview
+  - type: JSONSchema
+    url: json-schema/linked-account.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/config.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/execution.json
+  - type: JSONSchema
+    url: json-schema/workflow.json
+  - type: JSONSchema
+    url: json-schema/datastore.json
+  - type: JSONLDContext
+    url: json-ld/cobalt-context.jsonld
+  - type: SpectralRuleset
+    url: rules/cobalt-rules.yml
 name: Cobalt
 tags:
   - Automation
   - Embedded iPaaS
   - Integrations
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cobalt.png
 access: 3rd-Party
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/cobalt/overview
   - type: AgenticAccess
     url: agentic-access/cobalt-agentic-access.yml
   - type: TrustCenter
