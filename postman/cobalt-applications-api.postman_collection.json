@@ -1,0 +1,381 @@
+{
+  "info": {
+    "_postman_id": "6776eff7-6b35-4a6a-8dac-7e1ecd1bb41f",
+    "name": "Cobalt Applications API",
+    "description": "The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.\n\nContact Support:\n Name: Cobalt Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:22:58.000Z",
+    "updatedAt": "2026-07-28T01:22:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6776eff7-6b35-4a6a-8dac-7e1ecd1bb41f"
+  },
+  "item": [
+    {
+      "name": "public",
+      "item": [
+        {
+          "name": "application",
+          "item": [
+            {
+              "name": "{slug}",
+              "item": [
+                {
+                  "name": "Cobalt Get Application by Slug",
+                  "id": "6f87f6da-e0b6-4ed7-a7a1-e6d1b3358ca1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Optional linked account ID for context.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/application/:slug",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "application",
+                        ":slug"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b6bd5c70-17d1-4cbe-81ea-a4bf08870c61",
+                          "key": "slug",
+                          "value": "<string>",
+                          "description": "(Required) The application slug identifier."
+                        }
+                      ]
+                    },
+                    "description": "Returns application details for the specified application slug."
+                  },
+                  "response": [
+                    {
+                      "id": "49ae0842-c872-46ae-a512-8e0df2c82b18",
+                      "name": "Application retrieved successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Optional linked account ID for context.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/application/:slug",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "application",
+                            ":slug"
+                          ],
+                          "variable": [
+                            {
+                              "key": "slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"icon\": \"<string>\",\n  \"description\": \"<string>\",\n  \"auth_type\": \"<string>\",\n  \"connected\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-49ae0842-c872-46ae-a512-8e0df2c82b18"
+                    },
+                    {
+                      "id": "3990b135-b7ac-446e-b5bf-12e5dadb2a8b",
+                      "name": "Unauthorized - Invalid API key.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Optional linked account ID for context.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/application/:slug",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "application",
+                            ":slug"
+                          ],
+                          "variable": [
+                            {
+                              "key": "slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-3990b135-b7ac-446e-b5bf-12e5dadb2a8b"
+                    },
+                    {
+                      "id": "34b776b1-c681-4ab8-aa66-2e871ea5d544",
+                      "name": "Application not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Optional linked account ID for context.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/application/:slug",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "application",
+                            ":slug"
+                          ],
+                          "variable": [
+                            {
+                              "key": "slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-34b776b1-c681-4ab8-aa66-2e871ea5d544"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-6f87f6da-e0b6-4ed7-a7a1-e6d1b3358ca1"
+                }
+              ],
+              "id": "ce294d59-2159-4274-bd3b-96fc1d4521c0",
+              "createdAt": "2026-07-28T01:22:59.000Z",
+              "updatedAt": "2026-07-28T01:22:59.000Z",
+              "uid": "35240-ce294d59-2159-4274-bd3b-96fc1d4521c0"
+            },
+            {
+              "name": "Cobalt Get All Applications",
+              "id": "fbcb2b68-dbfe-4727-b4a7-8e4ac7fbc750",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Optional linked account ID to filter applications.",
+                    "key": "linked_account_id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/public/application",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "public",
+                    "application"
+                  ]
+                },
+                "description": "Returns all enabled applications. If a linked_account_id header is provided, returns applications specific to that linked account."
+              },
+              "response": [
+                {
+                  "id": "6579a973-7843-4a99-b9cd-ae8882a96fc2",
+                  "name": "List of applications retrieved successfully.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Optional linked account ID to filter applications.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/application",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "application"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"icon\": \"<string>\",\n    \"description\": \"<string>\",\n    \"auth_type\": \"<string>\",\n    \"connected\": \"<boolean>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"icon\": \"<string>\",\n    \"description\": \"<string>\",\n    \"auth_type\": \"<string>\",\n    \"connected\": \"<boolean>\"\n  }\n]",
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-6579a973-7843-4a99-b9cd-ae8882a96fc2"
+                },
+                {
+                  "id": "c018ac46-5077-4d4f-8c9b-34c46cd31551",
+                  "name": "Unauthorized - Invalid API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Optional linked account ID to filter applications.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/application",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "application"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-c018ac46-5077-4d4f-8c9b-34c46cd31551"
+                }
+              ],
+              "createdAt": "2026-07-28T01:22:59.000Z",
+              "updatedAt": "2026-07-28T01:22:59.000Z",
+              "uid": "35240-fbcb2b68-dbfe-4727-b4a7-8e4ac7fbc750"
+            }
+          ],
+          "id": "606dcca3-4612-41f9-80e4-d826f1605fed",
+          "createdAt": "2026-07-28T01:22:59.000Z",
+          "updatedAt": "2026-07-28T01:22:59.000Z",
+          "uid": "35240-606dcca3-4612-41f9-80e4-d826f1605fed"
+        }
+      ],
+      "id": "d1175fb9-78c2-4e8b-8b90-0cb4f69e4787",
+      "createdAt": "2026-07-28T01:22:59.000Z",
+      "updatedAt": "2026-07-28T01:22:59.000Z",
+      "uid": "35240-d1175fb9-78c2-4e8b-8b90-0cb4f69e4787"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.gocobalt.io/api/v2"
+    }
+  ]
+}

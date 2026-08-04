@@ -1,0 +1,545 @@
+{
+  "info": {
+    "_postman_id": "9f88917f-4545-4099-8baf-88239546054f",
+    "name": "Cobalt Applications Public Workflows API",
+    "description": "The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.\n\nContact Support:\n Name: Cobalt Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:23:22.000Z",
+    "updatedAt": "2026-07-28T01:23:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9f88917f-4545-4099-8baf-88239546054f"
+  },
+  "item": [
+    {
+      "name": "public",
+      "item": [
+        {
+          "name": "workflow",
+          "item": [
+            {
+              "name": "{workflow_id}",
+              "item": [
+                {
+                  "name": "execute",
+                  "item": [
+                    {
+                      "name": "Cobalt Execute Workflow",
+                      "id": "6c4356ad-6926-4977-9ee7-af09ac3b4fed",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"payload\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/public/workflow/:workflow_id/execute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "workflow",
+                            ":workflow_id",
+                            "execute"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a1d7ef3a-b750-4c48-8a02-f7f13d1a6bd7",
+                              "key": "workflow_id",
+                              "value": "<string>",
+                              "description": "(Required) The workflow ID."
+                            }
+                          ]
+                        },
+                        "description": "Executes a specific workflow programmatically."
+                      },
+                      "response": [
+                        {
+                          "id": "a51bd4df-1290-432a-87d4-529afa12d700",
+                          "name": "Workflow execution initiated successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payload\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/public/workflow/:workflow_id/execute",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "workflow",
+                                ":workflow_id",
+                                "execute"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workflow_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"execution_id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:23:22.000Z",
+                          "updatedAt": "2026-07-28T01:23:22.000Z",
+                          "uid": "35240-a51bd4df-1290-432a-87d4-529afa12d700"
+                        },
+                        {
+                          "id": "7844d7a2-ae79-4cb3-bb6b-9b68275d7643",
+                          "name": "Unauthorized - Invalid API key.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payload\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/public/workflow/:workflow_id/execute",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "workflow",
+                                ":workflow_id",
+                                "execute"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workflow_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:22.000Z",
+                          "updatedAt": "2026-07-28T01:23:22.000Z",
+                          "uid": "35240-7844d7a2-ae79-4cb3-bb6b-9b68275d7643"
+                        },
+                        {
+                          "id": "76e522db-2595-457a-91b5-b91f34f7885e",
+                          "name": "Workflow not found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payload\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/public/workflow/:workflow_id/execute",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "workflow",
+                                ":workflow_id",
+                                "execute"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workflow_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:22.000Z",
+                          "updatedAt": "2026-07-28T01:23:22.000Z",
+                          "uid": "35240-76e522db-2595-457a-91b5-b91f34f7885e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:23:22.000Z",
+                      "updatedAt": "2026-07-28T01:23:22.000Z",
+                      "uid": "35240-6c4356ad-6926-4977-9ee7-af09ac3b4fed"
+                    }
+                  ],
+                  "id": "95dc7a5c-f356-47e5-860b-4aadf1412f33",
+                  "createdAt": "2026-07-28T01:23:22.000Z",
+                  "updatedAt": "2026-07-28T01:23:22.000Z",
+                  "uid": "35240-95dc7a5c-f356-47e5-860b-4aadf1412f33"
+                }
+              ],
+              "id": "9fbd2a10-c8d1-429b-8e83-094da9c20ca1",
+              "createdAt": "2026-07-28T01:23:22.000Z",
+              "updatedAt": "2026-07-28T01:23:22.000Z",
+              "uid": "35240-9fbd2a10-c8d1-429b-8e83-094da9c20ca1"
+            },
+            {
+              "name": "Cobalt Create Public Workflow",
+              "id": "7ef0bfac-a95e-4998-9dd2-659623587194",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"nodes\": [\n    {\n      \"type\": \"<string>\",\n      \"config\": {}\n    },\n    {\n      \"type\": \"<string>\",\n      \"config\": {}\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/public/workflow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "public",
+                    "workflow"
+                  ]
+                },
+                "description": "Creates a new public workflow with the specified nodes."
+              },
+              "response": [
+                {
+                  "id": "87f53181-b162-4639-b42f-842799fe15a6",
+                  "name": "Public workflow created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"nodes\": [\n    {\n      \"type\": \"<string>\",\n      \"config\": {}\n    },\n    {\n      \"type\": \"<string>\",\n      \"config\": {}\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/public/workflow",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "workflow"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"nodes\": [\n    {\n      \"type\": \"<string>\",\n      \"config\": {}\n    },\n    {\n      \"type\": \"<string>\",\n      \"config\": {}\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T01:23:22.000Z",
+                  "updatedAt": "2026-07-28T01:23:22.000Z",
+                  "uid": "35240-87f53181-b162-4639-b42f-842799fe15a6"
+                },
+                {
+                  "id": "4dcad8a2-8f69-49d7-9dac-ba4cbe6deac1",
+                  "name": "Bad request.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"nodes\": [\n    {\n      \"type\": \"<string>\",\n      \"config\": {}\n    },\n    {\n      \"type\": \"<string>\",\n      \"config\": {}\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/public/workflow",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "workflow"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:22.000Z",
+                  "updatedAt": "2026-07-28T01:23:22.000Z",
+                  "uid": "35240-4dcad8a2-8f69-49d7-9dac-ba4cbe6deac1"
+                },
+                {
+                  "id": "8619ba7b-7857-4c02-be31-598089a7832e",
+                  "name": "Unauthorized - Invalid session token.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"nodes\": [\n    {\n      \"type\": \"<string>\",\n      \"config\": {}\n    },\n    {\n      \"type\": \"<string>\",\n      \"config\": {}\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/public/workflow",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "workflow"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:22.000Z",
+                  "updatedAt": "2026-07-28T01:23:22.000Z",
+                  "uid": "35240-8619ba7b-7857-4c02-be31-598089a7832e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:23:22.000Z",
+              "updatedAt": "2026-07-28T01:23:22.000Z",
+              "uid": "35240-7ef0bfac-a95e-4998-9dd2-659623587194"
+            }
+          ],
+          "id": "3bca0e2c-0454-4d63-a341-4b707c7b9dcf",
+          "createdAt": "2026-07-28T01:23:22.000Z",
+          "updatedAt": "2026-07-28T01:23:22.000Z",
+          "uid": "35240-3bca0e2c-0454-4d63-a341-4b707c7b9dcf"
+        }
+      ],
+      "id": "a462fd64-4bf5-4e01-9cc9-7d6ce58c7a3a",
+      "createdAt": "2026-07-28T01:23:22.000Z",
+      "updatedAt": "2026-07-28T01:23:22.000Z",
+      "uid": "35240-a462fd64-4bf5-4e01-9cc9-7d6ce58c7a3a"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.gocobalt.io/api/v2"
+    }
+  ]
+}

@@ -1,0 +1,381 @@
+{
+  "info": {
+    "_postman_id": "eaf1dd5c-9a62-4ff9-bd36-b45f386873aa",
+    "name": "Cobalt Applications Executions API",
+    "description": "The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.\n\nContact Support:\n Name: Cobalt Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:23:03.000Z",
+    "updatedAt": "2026-07-28T01:23:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-eaf1dd5c-9a62-4ff9-bd36-b45f386873aa"
+  },
+  "item": [
+    {
+      "name": "public",
+      "item": [
+        {
+          "name": "execution",
+          "item": [
+            {
+              "name": "{execution_id}",
+              "item": [
+                {
+                  "name": "Cobalt Get Execution by ID",
+                  "id": "5f76bcb8-af99-4c37-aed2-f8dd29b4a3a6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The linked account ID.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/execution/:execution_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "execution",
+                        ":execution_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3fe96cbe-b920-4288-9da4-bc8f90ae0f57",
+                          "key": "execution_id",
+                          "value": "<string>",
+                          "description": "(Required) The execution ID."
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the details of a specific workflow execution."
+                  },
+                  "response": [
+                    {
+                      "id": "7ab44082-22d2-4eb1-8d4a-241955b8a5e7",
+                      "name": "Execution details retrieved successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/execution/:execution_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "execution",
+                            ":execution_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "execution_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_id\": \"<string>\",\n  \"workflow_id\": \"<string>\",\n  \"linked_account_id\": \"<string>\",\n  \"status\": \"pending\",\n  \"started_at\": \"<dateTime>\",\n  \"completed_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T01:23:03.000Z",
+                      "updatedAt": "2026-07-28T01:23:03.000Z",
+                      "uid": "35240-7ab44082-22d2-4eb1-8d4a-241955b8a5e7"
+                    },
+                    {
+                      "id": "81437633-d49d-4fd7-93e2-9b4720e256d6",
+                      "name": "Unauthorized - Invalid API key.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/execution/:execution_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "execution",
+                            ":execution_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "execution_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:03.000Z",
+                      "updatedAt": "2026-07-28T01:23:03.000Z",
+                      "uid": "35240-81437633-d49d-4fd7-93e2-9b4720e256d6"
+                    },
+                    {
+                      "id": "0ffd50df-cbad-4c2f-8282-296c8cee95a4",
+                      "name": "Execution not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/execution/:execution_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "execution",
+                            ":execution_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "execution_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:03.000Z",
+                      "updatedAt": "2026-07-28T01:23:03.000Z",
+                      "uid": "35240-0ffd50df-cbad-4c2f-8282-296c8cee95a4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:03.000Z",
+                  "updatedAt": "2026-07-28T01:23:03.000Z",
+                  "uid": "35240-5f76bcb8-af99-4c37-aed2-f8dd29b4a3a6"
+                }
+              ],
+              "id": "a365038c-e562-4b49-9c39-b49412cab4be",
+              "createdAt": "2026-07-28T01:23:03.000Z",
+              "updatedAt": "2026-07-28T01:23:03.000Z",
+              "uid": "35240-a365038c-e562-4b49-9c39-b49412cab4be"
+            },
+            {
+              "name": "Cobalt List Executions",
+              "id": "6963e1f2-9b62-4be5-be2c-77926c18da80",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The linked account ID.",
+                    "key": "linked_account_id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/public/execution",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "public",
+                    "execution"
+                  ]
+                },
+                "description": "Returns a list of workflow executions for a linked account."
+              },
+              "response": [
+                {
+                  "id": "119b4227-f509-4e53-91bb-c34500a304f3",
+                  "name": "List of executions retrieved successfully.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The linked account ID.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/execution",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "execution"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"_id\": \"<string>\",\n    \"workflow_id\": \"<string>\",\n    \"linked_account_id\": \"<string>\",\n    \"status\": \"failed\",\n    \"started_at\": \"<dateTime>\",\n    \"completed_at\": \"<dateTime>\"\n  },\n  {\n    \"_id\": \"<string>\",\n    \"workflow_id\": \"<string>\",\n    \"linked_account_id\": \"<string>\",\n    \"status\": \"completed\",\n    \"started_at\": \"<dateTime>\",\n    \"completed_at\": \"<dateTime>\"\n  }\n]",
+                  "createdAt": "2026-07-28T01:23:03.000Z",
+                  "updatedAt": "2026-07-28T01:23:03.000Z",
+                  "uid": "35240-119b4227-f509-4e53-91bb-c34500a304f3"
+                },
+                {
+                  "id": "e6686419-71fe-4dc3-9741-1b257fe8c7fb",
+                  "name": "Unauthorized - Invalid API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The linked account ID.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/execution",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "execution"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:03.000Z",
+                  "updatedAt": "2026-07-28T01:23:03.000Z",
+                  "uid": "35240-e6686419-71fe-4dc3-9741-1b257fe8c7fb"
+                }
+              ],
+              "createdAt": "2026-07-28T01:23:03.000Z",
+              "updatedAt": "2026-07-28T01:23:03.000Z",
+              "uid": "35240-6963e1f2-9b62-4be5-be2c-77926c18da80"
+            }
+          ],
+          "id": "686a8da5-afa3-4935-baf4-2f31c8ec9f02",
+          "createdAt": "2026-07-28T01:23:03.000Z",
+          "updatedAt": "2026-07-28T01:23:03.000Z",
+          "uid": "35240-686a8da5-afa3-4935-baf4-2f31c8ec9f02"
+        }
+      ],
+      "id": "9284e83e-a786-4519-aa46-7ed25dc21e23",
+      "createdAt": "2026-07-28T01:23:03.000Z",
+      "updatedAt": "2026-07-28T01:23:03.000Z",
+      "uid": "35240-9284e83e-a786-4519-aa46-7ed25dc21e23"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.gocobalt.io/api/v2"
+    }
+  ]
+}

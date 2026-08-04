@@ -1,0 +1,1090 @@
+{
+  "info": {
+    "_postman_id": "3e8f84ec-45fe-42d7-a76e-c90d43ef058c",
+    "name": "Cobalt Applications Linked Accounts API",
+    "description": "The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.\n\nContact Support:\n Name: Cobalt Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:23:04.000Z",
+    "updatedAt": "2026-07-28T01:23:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3e8f84ec-45fe-42d7-a76e-c90d43ef058c"
+  },
+  "item": [
+    {
+      "name": "public",
+      "item": [
+        {
+          "name": "linked-account",
+          "item": [
+            {
+              "name": "{linked_account_id}",
+              "item": [
+                {
+                  "name": "migrate-token",
+                  "item": [
+                    {
+                      "name": "Cobalt Migrate Token for Linked Account",
+                      "id": "a90428cd-7449-45f3-b9e8-0e62115b6fbc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"slug\": \"<string>\",\n  \"token\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/public/linked-account/:linked_account_id/migrate-token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "linked-account",
+                            ":linked_account_id",
+                            "migrate-token"
+                          ],
+                          "variable": [
+                            {
+                              "id": "14f891c5-f1e3-4bab-bfe4-810d84b99f24",
+                              "key": "linked_account_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the linked account."
+                            }
+                          ]
+                        },
+                        "description": "Migrates authentication tokens for a linked account."
+                      },
+                      "response": [
+                        {
+                          "id": "14e0ca00-25cf-4ace-9093-53e57014b857",
+                          "name": "Token migrated successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"slug\": \"<string>\",\n  \"token\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/public/linked-account/:linked_account_id/migrate-token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "linked-account",
+                                ":linked_account_id",
+                                "migrate-token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "linked_account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:05.000Z",
+                          "updatedAt": "2026-07-28T01:23:05.000Z",
+                          "uid": "35240-14e0ca00-25cf-4ace-9093-53e57014b857"
+                        },
+                        {
+                          "id": "c29416f6-1e45-4b8a-862a-3a287f507424",
+                          "name": "Bad request.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"slug\": \"<string>\",\n  \"token\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/public/linked-account/:linked_account_id/migrate-token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "linked-account",
+                                ":linked_account_id",
+                                "migrate-token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "linked_account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:05.000Z",
+                          "updatedAt": "2026-07-28T01:23:05.000Z",
+                          "uid": "35240-c29416f6-1e45-4b8a-862a-3a287f507424"
+                        },
+                        {
+                          "id": "66641ed5-843f-4029-80c1-77e8ddd97944",
+                          "name": "Unauthorized - Invalid API key.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"slug\": \"<string>\",\n  \"token\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/public/linked-account/:linked_account_id/migrate-token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "linked-account",
+                                ":linked_account_id",
+                                "migrate-token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "linked_account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:05.000Z",
+                          "updatedAt": "2026-07-28T01:23:05.000Z",
+                          "uid": "35240-66641ed5-843f-4029-80c1-77e8ddd97944"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:23:05.000Z",
+                      "updatedAt": "2026-07-28T01:23:05.000Z",
+                      "uid": "35240-a90428cd-7449-45f3-b9e8-0e62115b6fbc"
+                    }
+                  ],
+                  "id": "08006ba0-7331-4709-9b08-1d34e1ed0077",
+                  "createdAt": "2026-07-28T01:23:05.000Z",
+                  "updatedAt": "2026-07-28T01:23:05.000Z",
+                  "uid": "35240-08006ba0-7331-4709-9b08-1d34e1ed0077"
+                },
+                {
+                  "name": "Cobalt Get Linked Account by ID",
+                  "id": "179de6b7-de80-4f97-b694-a8048eaf1314",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/linked-account/:linked_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "linked-account",
+                        ":linked_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "bcab20d1-6786-4563-90b3-2667d38de7a3",
+                          "key": "linked_account_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the linked account."
+                        }
+                      ]
+                    },
+                    "description": "Returns a linked account by its unique identifier."
+                  },
+                  "response": [
+                    {
+                      "id": "45fae661-00a1-4fdd-914f-9e8e15c94afa",
+                      "name": "Linked account retrieved successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/linked-account/:linked_account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "linked-account",
+                            ":linked_account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "linked_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_id\": \"<string>\",\n  \"linked_account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"your_app\": {},\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T01:23:05.000Z",
+                      "updatedAt": "2026-07-28T01:23:05.000Z",
+                      "uid": "35240-45fae661-00a1-4fdd-914f-9e8e15c94afa"
+                    },
+                    {
+                      "id": "1cb40931-dd09-4a8d-8e38-934001bedc2a",
+                      "name": "Unauthorized - Invalid API key.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/linked-account/:linked_account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "linked-account",
+                            ":linked_account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "linked_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:05.000Z",
+                      "updatedAt": "2026-07-28T01:23:05.000Z",
+                      "uid": "35240-1cb40931-dd09-4a8d-8e38-934001bedc2a"
+                    },
+                    {
+                      "id": "71611d8a-e11d-4d24-863e-16214c2cd25a",
+                      "name": "Linked account not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/linked-account/:linked_account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "linked-account",
+                            ":linked_account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "linked_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:05.000Z",
+                      "updatedAt": "2026-07-28T01:23:05.000Z",
+                      "uid": "35240-71611d8a-e11d-4d24-863e-16214c2cd25a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:05.000Z",
+                  "updatedAt": "2026-07-28T01:23:05.000Z",
+                  "uid": "35240-179de6b7-de80-4f97-b694-a8048eaf1314"
+                },
+                {
+                  "name": "Cobalt Delete Linked Account",
+                  "id": "1e51cdfb-e30f-4eec-ad25-b77798d1df40",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/linked-account/:linked_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "linked-account",
+                        ":linked_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "66e70b7a-694c-4d2e-917d-bd2d78a5d4b4",
+                          "key": "linked_account_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the linked account."
+                        }
+                      ]
+                    },
+                    "description": "Deletes a linked account by its unique identifier."
+                  },
+                  "response": [
+                    {
+                      "id": "03c49c90-19e6-4222-98d3-78393b786f8b",
+                      "name": "Linked account deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/linked-account/:linked_account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "linked-account",
+                            ":linked_account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "linked_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:05.000Z",
+                      "updatedAt": "2026-07-28T01:23:05.000Z",
+                      "uid": "35240-03c49c90-19e6-4222-98d3-78393b786f8b"
+                    },
+                    {
+                      "id": "6491adbd-3944-4743-a25a-694038208e44",
+                      "name": "Unauthorized - Invalid API key.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/linked-account/:linked_account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "linked-account",
+                            ":linked_account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "linked_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:05.000Z",
+                      "updatedAt": "2026-07-28T01:23:05.000Z",
+                      "uid": "35240-6491adbd-3944-4743-a25a-694038208e44"
+                    },
+                    {
+                      "id": "d69832f3-76fb-4cbd-adb0-cc4d9538e3c1",
+                      "name": "Linked account not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/linked-account/:linked_account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "linked-account",
+                            ":linked_account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "linked_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:05.000Z",
+                      "updatedAt": "2026-07-28T01:23:05.000Z",
+                      "uid": "35240-d69832f3-76fb-4cbd-adb0-cc4d9538e3c1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:05.000Z",
+                  "updatedAt": "2026-07-28T01:23:05.000Z",
+                  "uid": "35240-1e51cdfb-e30f-4eec-ad25-b77798d1df40"
+                }
+              ],
+              "id": "825162f4-d58d-479c-8e63-a4ce4ef8b5f7",
+              "createdAt": "2026-07-28T01:23:05.000Z",
+              "updatedAt": "2026-07-28T01:23:05.000Z",
+              "uid": "35240-825162f4-d58d-479c-8e63-a4ce4ef8b5f7"
+            },
+            {
+              "name": "upsert",
+              "item": [
+                {
+                  "name": "Cobalt Upsert Linked Account",
+                  "id": "e7141759-1ce9-4a8f-bc55-69423b67295e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"linked_account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"your_app\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/public/linked-account/upsert",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "linked-account",
+                        "upsert"
+                      ]
+                    },
+                    "description": "Creates or updates a linked account. If the linked account exists, it will be updated; otherwise a new one will be created."
+                  },
+                  "response": [
+                    {
+                      "id": "3320fe5f-ccff-4eda-84c7-688e476a42a4",
+                      "name": "Linked account upserted successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"linked_account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"your_app\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/public/linked-account/upsert",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "linked-account",
+                            "upsert"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_id\": \"<string>\",\n  \"linked_account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"your_app\": {},\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T01:23:05.000Z",
+                      "updatedAt": "2026-07-28T01:23:05.000Z",
+                      "uid": "35240-3320fe5f-ccff-4eda-84c7-688e476a42a4"
+                    },
+                    {
+                      "id": "01475725-681f-4f6f-b51f-30c19f6c05f4",
+                      "name": "Unauthorized - Invalid API key.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"linked_account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"your_app\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/public/linked-account/upsert",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "linked-account",
+                            "upsert"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:05.000Z",
+                      "updatedAt": "2026-07-28T01:23:05.000Z",
+                      "uid": "35240-01475725-681f-4f6f-b51f-30c19f6c05f4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:05.000Z",
+                  "updatedAt": "2026-07-28T01:23:05.000Z",
+                  "uid": "35240-e7141759-1ce9-4a8f-bc55-69423b67295e"
+                }
+              ],
+              "id": "27f38c9f-83a4-44e6-bcfc-0c3249333922",
+              "createdAt": "2026-07-28T01:23:05.000Z",
+              "updatedAt": "2026-07-28T01:23:05.000Z",
+              "uid": "35240-27f38c9f-83a4-44e6-bcfc-0c3249333922"
+            },
+            {
+              "name": "Cobalt Get All Linked Accounts",
+              "id": "9644bd8e-2a57-4bf3-844c-73aea04eb343",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/public/linked-account",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "public",
+                    "linked-account"
+                  ]
+                },
+                "description": "Returns a list of all linked accounts."
+              },
+              "response": [
+                {
+                  "id": "ed8302a5-bdd8-4ef9-8d69-4135fa7efb67",
+                  "name": "List of linked accounts retrieved successfully.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/linked-account",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "linked-account"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"_id\": \"<string>\",\n    \"linked_account_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"your_app\": {},\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  {\n    \"_id\": \"<string>\",\n    \"linked_account_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"your_app\": {},\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n]",
+                  "createdAt": "2026-07-28T01:23:05.000Z",
+                  "updatedAt": "2026-07-28T01:23:05.000Z",
+                  "uid": "35240-ed8302a5-bdd8-4ef9-8d69-4135fa7efb67"
+                },
+                {
+                  "id": "2239a6e9-a455-4a6c-89c5-90639a0748f4",
+                  "name": "Unauthorized - Invalid API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/linked-account",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "linked-account"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:05.000Z",
+                  "updatedAt": "2026-07-28T01:23:05.000Z",
+                  "uid": "35240-2239a6e9-a455-4a6c-89c5-90639a0748f4"
+                }
+              ],
+              "createdAt": "2026-07-28T01:23:05.000Z",
+              "updatedAt": "2026-07-28T01:23:05.000Z",
+              "uid": "35240-9644bd8e-2a57-4bf3-844c-73aea04eb343"
+            },
+            {
+              "name": "Cobalt Create Linked Account",
+              "id": "6d66fd52-75d3-4221-8a91-f89855d85379",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"linked_account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"your_app\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/public/linked-account",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "public",
+                    "linked-account"
+                  ]
+                },
+                "description": "Creates a new linked account. Linked accounts represent your end-customers on whose behalf you call the Cobalt APIs."
+              },
+              "response": [
+                {
+                  "id": "a3aa2a76-f193-4262-928c-d30e4a16ac47",
+                  "name": "Linked account created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"linked_account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"your_app\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/public/linked-account",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "linked-account"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"_id\": \"<string>\",\n  \"linked_account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"your_app\": {},\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T01:23:05.000Z",
+                  "updatedAt": "2026-07-28T01:23:05.000Z",
+                  "uid": "35240-a3aa2a76-f193-4262-928c-d30e4a16ac47"
+                },
+                {
+                  "id": "5a2d95f7-6d3d-4350-a5d7-90a81a04d55e",
+                  "name": "Bad request - Missing required parameters.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"linked_account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"your_app\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/public/linked-account",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "linked-account"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:05.000Z",
+                  "updatedAt": "2026-07-28T01:23:05.000Z",
+                  "uid": "35240-5a2d95f7-6d3d-4350-a5d7-90a81a04d55e"
+                },
+                {
+                  "id": "33146b8f-63a7-41d4-aed3-ba7e3f816fa1",
+                  "name": "Unauthorized - Invalid API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"linked_account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"your_app\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/public/linked-account",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "linked-account"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:05.000Z",
+                  "updatedAt": "2026-07-28T01:23:05.000Z",
+                  "uid": "35240-33146b8f-63a7-41d4-aed3-ba7e3f816fa1"
+                }
+              ],
+              "createdAt": "2026-07-28T01:23:05.000Z",
+              "updatedAt": "2026-07-28T01:23:05.000Z",
+              "uid": "35240-6d66fd52-75d3-4221-8a91-f89855d85379"
+            }
+          ],
+          "id": "aa1a569b-013b-475a-a7fe-0ae3ea9f9c86",
+          "createdAt": "2026-07-28T01:23:05.000Z",
+          "updatedAt": "2026-07-28T01:23:05.000Z",
+          "uid": "35240-aa1a569b-013b-475a-a7fe-0ae3ea9f9c86"
+        }
+      ],
+      "id": "84f5999d-f246-4bca-8809-e2d8f627d506",
+      "createdAt": "2026-07-28T01:23:05.000Z",
+      "updatedAt": "2026-07-28T01:23:05.000Z",
+      "uid": "35240-84f5999d-f246-4bca-8809-e2d8f627d506"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.gocobalt.io/api/v2"
+    }
+  ]
+}

@@ -1,0 +1,653 @@
+{
+  "info": {
+    "_postman_id": "0c779ba6-3648-426a-9224-68dc1ed3d0f7",
+    "name": "Cobalt Applications Datastores API",
+    "description": "The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.\n\nContact Support:\n Name: Cobalt Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:23:01.000Z",
+    "updatedAt": "2026-07-28T01:23:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0c779ba6-3648-426a-9224-68dc1ed3d0f7"
+  },
+  "item": [
+    {
+      "name": "public",
+      "item": [
+        {
+          "name": "datastore",
+          "item": [
+            {
+              "name": "{datastore_id}",
+              "item": [
+                {
+                  "name": "records",
+                  "item": [
+                    {
+                      "name": "Cobalt List Records in Datastore",
+                      "id": "71f49dc0-933a-4673-a9f9-48c966365758",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/datastore/:datastore_id/records",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "datastore",
+                            ":datastore_id",
+                            "records"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7c352be0-8073-480d-9187-2b20024a90a4",
+                              "key": "datastore_id",
+                              "value": "<string>",
+                              "description": "(Required) The datastore ID."
+                            }
+                          ]
+                        },
+                        "description": "Returns all records in a specific datastore."
+                      },
+                      "response": [
+                        {
+                          "id": "ee862453-1c3c-419d-b559-44d173603b12",
+                          "name": "Datastore records retrieved successfully.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/public/datastore/:datastore_id/records",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "datastore",
+                                ":datastore_id",
+                                "records"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "datastore_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[]",
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-ee862453-1c3c-419d-b559-44d173603b12"
+                        },
+                        {
+                          "id": "f70fae8e-17ec-4fe6-a2b7-e008c973129b",
+                          "name": "Unauthorized - Invalid API key.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/public/datastore/:datastore_id/records",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "datastore",
+                                ":datastore_id",
+                                "records"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "datastore_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-f70fae8e-17ec-4fe6-a2b7-e008c973129b"
+                        },
+                        {
+                          "id": "069ff8ab-0b6e-4746-976e-c618dc3c4d52",
+                          "name": "Datastore not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/public/datastore/:datastore_id/records",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "datastore",
+                                ":datastore_id",
+                                "records"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "datastore_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-069ff8ab-0b6e-4746-976e-c618dc3c4d52"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:23:01.000Z",
+                      "updatedAt": "2026-07-28T01:23:01.000Z",
+                      "uid": "35240-71f49dc0-933a-4673-a9f9-48c966365758"
+                    }
+                  ],
+                  "id": "9597d601-0f13-4683-8d82-41f4c01f9eb0",
+                  "createdAt": "2026-07-28T01:23:01.000Z",
+                  "updatedAt": "2026-07-28T01:23:01.000Z",
+                  "uid": "35240-9597d601-0f13-4683-8d82-41f4c01f9eb0"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Cobalt Search Datastore Records",
+                      "id": "ea498aea-7a68-417c-9f21-7eac468481f2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/public/datastore/:datastore_id/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "datastore",
+                            ":datastore_id",
+                            "search"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7d8d126b-de59-4ec3-952e-3e1cbfd5a27e",
+                              "key": "datastore_id",
+                              "value": "<string>",
+                              "description": "(Required) The datastore ID."
+                            }
+                          ]
+                        },
+                        "description": "Searches for records in a specific datastore."
+                      },
+                      "response": [
+                        {
+                          "id": "95ec144c-3d39-4e3f-9fff-73126c7dd103",
+                          "name": "Search results retrieved successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"query\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/public/datastore/:datastore_id/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "datastore",
+                                ":datastore_id",
+                                "search"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "datastore_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[]",
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-95ec144c-3d39-4e3f-9fff-73126c7dd103"
+                        },
+                        {
+                          "id": "039e154c-589d-4586-bafb-e610b554b56d",
+                          "name": "Unauthorized - Invalid API key.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"query\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/public/datastore/:datastore_id/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "datastore",
+                                ":datastore_id",
+                                "search"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "datastore_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-039e154c-589d-4586-bafb-e610b554b56d"
+                        },
+                        {
+                          "id": "9c428438-64d8-494a-88b5-f0bce77bdc00",
+                          "name": "Datastore not found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"query\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/public/datastore/:datastore_id/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "datastore",
+                                ":datastore_id",
+                                "search"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "datastore_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-9c428438-64d8-494a-88b5-f0bce77bdc00"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:23:01.000Z",
+                      "updatedAt": "2026-07-28T01:23:01.000Z",
+                      "uid": "35240-ea498aea-7a68-417c-9f21-7eac468481f2"
+                    }
+                  ],
+                  "id": "269575e0-8f1e-4488-8456-f931fc6ce1fb",
+                  "createdAt": "2026-07-28T01:23:01.000Z",
+                  "updatedAt": "2026-07-28T01:23:01.000Z",
+                  "uid": "35240-269575e0-8f1e-4488-8456-f931fc6ce1fb"
+                }
+              ],
+              "id": "639b9f85-0a47-4f42-8a6e-11dbbe779a92",
+              "createdAt": "2026-07-28T01:23:01.000Z",
+              "updatedAt": "2026-07-28T01:23:01.000Z",
+              "uid": "35240-639b9f85-0a47-4f42-8a6e-11dbbe779a92"
+            },
+            {
+              "name": "Cobalt Get All Config Datastores",
+              "id": "0bd58aed-61f4-464c-82dd-422fb2460a51",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The linked account ID.",
+                    "key": "linked_account_id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/public/datastore",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "public",
+                    "datastore"
+                  ]
+                },
+                "description": "Returns all datastores associated with a configuration."
+              },
+              "response": [
+                {
+                  "id": "a5375057-cd77-455a-9e5b-f8175569872f",
+                  "name": "List of datastores retrieved successfully.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The linked account ID.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/datastore",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "datastore"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"config_id\": \"<string>\"\n  },\n  {\n    \"_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"config_id\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-07-28T01:23:01.000Z",
+                  "updatedAt": "2026-07-28T01:23:01.000Z",
+                  "uid": "35240-a5375057-cd77-455a-9e5b-f8175569872f"
+                },
+                {
+                  "id": "97af8ddc-92c2-4b3c-b55d-7bbfe47836b7",
+                  "name": "Unauthorized - Invalid API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The linked account ID.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/datastore",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "datastore"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:01.000Z",
+                  "updatedAt": "2026-07-28T01:23:01.000Z",
+                  "uid": "35240-97af8ddc-92c2-4b3c-b55d-7bbfe47836b7"
+                }
+              ],
+              "createdAt": "2026-07-28T01:23:01.000Z",
+              "updatedAt": "2026-07-28T01:23:01.000Z",
+              "uid": "35240-0bd58aed-61f4-464c-82dd-422fb2460a51"
+            }
+          ],
+          "id": "e82559ab-6905-4b64-9374-a1a4fd18bb43",
+          "createdAt": "2026-07-28T01:23:01.000Z",
+          "updatedAt": "2026-07-28T01:23:01.000Z",
+          "uid": "35240-e82559ab-6905-4b64-9374-a1a4fd18bb43"
+        }
+      ],
+      "id": "02b4b082-2759-4338-a366-ed8a2ac2cf95",
+      "createdAt": "2026-07-28T01:23:01.000Z",
+      "updatedAt": "2026-07-28T01:23:01.000Z",
+      "uid": "35240-02b4b082-2759-4338-a366-ed8a2ac2cf95"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.gocobalt.io/api/v2"
+    }
+  ]
+}

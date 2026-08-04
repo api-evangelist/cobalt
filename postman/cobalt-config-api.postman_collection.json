@@ -1,0 +1,2088 @@
+{
+  "info": {
+    "_postman_id": "5982f89c-7cfa-4334-a9ca-9a3894ce2fa3",
+    "name": "Cobalt Applications Config API",
+    "description": "The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.\n\nContact Support:\n Name: Cobalt Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:23:00.000Z",
+    "updatedAt": "2026-07-28T01:23:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5982f89c-7cfa-4334-a9ca-9a3894ce2fa3"
+  },
+  "item": [
+    {
+      "name": "public",
+      "item": [
+        {
+          "name": "config",
+          "item": [
+            {
+              "name": "{config_id}",
+              "item": [
+                {
+                  "name": "fields",
+                  "item": [
+                    {
+                      "name": "Cobalt Get All Config Fields",
+                      "id": "02bf8bb9-83b8-4aaa-98bd-fcf81aae32e0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/:config_id/fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            ":config_id",
+                            "fields"
+                          ],
+                          "variable": [
+                            {
+                              "id": "60ebd4e4-5e1b-4ce9-9496-20d5a335609e",
+                              "key": "config_id",
+                              "value": "<string>",
+                              "description": "(Required) The configuration ID."
+                            }
+                          ]
+                        },
+                        "description": "Returns all fields for a specific configuration."
+                      },
+                      "response": [
+                        {
+                          "id": "5ed0299e-f329-4ab5-ba68-f7cd0a562269",
+                          "name": "Config fields retrieved successfully.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/public/config/:config_id/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "config",
+                                ":config_id",
+                                "fields"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "config_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T01:23:00.000Z",
+                          "updatedAt": "2026-07-28T01:23:00.000Z",
+                          "uid": "35240-5ed0299e-f329-4ab5-ba68-f7cd0a562269"
+                        },
+                        {
+                          "id": "fddf933d-17c6-42d4-8239-32dff0813954",
+                          "name": "Unauthorized - Invalid API key.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/public/config/:config_id/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "config",
+                                ":config_id",
+                                "fields"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "config_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:00.000Z",
+                          "updatedAt": "2026-07-28T01:23:00.000Z",
+                          "uid": "35240-fddf933d-17c6-42d4-8239-32dff0813954"
+                        },
+                        {
+                          "id": "a99b4c35-cf77-4fa1-8141-fa8a0019c2eb",
+                          "name": "Config not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/public/config/:config_id/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "config",
+                                ":config_id",
+                                "fields"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "config_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:00.000Z",
+                          "updatedAt": "2026-07-28T01:23:00.000Z",
+                          "uid": "35240-a99b4c35-cf77-4fa1-8141-fa8a0019c2eb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-02bf8bb9-83b8-4aaa-98bd-fcf81aae32e0"
+                    }
+                  ],
+                  "id": "42b5fad1-6d23-4d7d-b1bd-f7c987fb5e53",
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-42b5fad1-6d23-4d7d-b1bd-f7c987fb5e53"
+                },
+                {
+                  "name": "field",
+                  "item": [
+                    {
+                      "name": "{field_id}",
+                      "item": [
+                        {
+                          "name": "Cobalt Get Field Value by ID in Config",
+                          "id": "08f5a66d-922b-48cc-becf-440c77800c72",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "config",
+                                ":config_id",
+                                "field",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "829d0034-5062-4d78-8eed-ce56ea1a68aa",
+                                  "key": "config_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The configuration ID."
+                                },
+                                {
+                                  "id": "cdec9af5-e09c-4861-81f0-e458d5c9af4e",
+                                  "key": "field_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The field ID."
+                                }
+                              ]
+                            },
+                            "description": "Returns a specific field value from a configuration."
+                          },
+                          "response": [
+                            {
+                              "id": "81df1a65-dda3-48bc-bf3e-89bc4778c67d",
+                              "name": "Field value retrieved successfully.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "field",
+                                    ":field_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    },
+                                    {
+                                      "key": "field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-81df1a65-dda3-48bc-bf3e-89bc4778c67d"
+                            },
+                            {
+                              "id": "34832341-0c3c-40ef-970a-d4fe070a601a",
+                              "name": "Unauthorized - Invalid API key.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "field",
+                                    ":field_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    },
+                                    {
+                                      "key": "field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-34832341-0c3c-40ef-970a-d4fe070a601a"
+                            },
+                            {
+                              "id": "2d8578b0-fd85-4c92-88de-f06fc042bc32",
+                              "name": "Field or config not found.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "field",
+                                    ":field_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    },
+                                    {
+                                      "key": "field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-2d8578b0-fd85-4c92-88de-f06fc042bc32"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:23:00.000Z",
+                          "updatedAt": "2026-07-28T01:23:00.000Z",
+                          "uid": "35240-08f5a66d-922b-48cc-becf-440c77800c72"
+                        },
+                        {
+                          "name": "Cobalt Update Field Value by ID in Config",
+                          "id": "55d20d72-4ef0-4d42-b883-2abfd90ab11c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "config",
+                                ":config_id",
+                                "field",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bfe70bb7-4e65-4b56-a185-c78edf94d382",
+                                  "key": "config_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The configuration ID."
+                                },
+                                {
+                                  "id": "c872910b-b120-40b8-a1ae-0f7fee012fa6",
+                                  "key": "field_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The field ID."
+                                }
+                              ]
+                            },
+                            "description": "Updates a specific field value in a configuration."
+                          },
+                          "response": [
+                            {
+                              "id": "b0de1c59-f593-4f71-a78b-6bb791949be9",
+                              "name": "Field value updated successfully.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"value\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "field",
+                                    ":field_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    },
+                                    {
+                                      "key": "field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-b0de1c59-f593-4f71-a78b-6bb791949be9"
+                            },
+                            {
+                              "id": "3662a9dd-e311-4b12-a941-be536f2a6ff9",
+                              "name": "Unauthorized - Invalid API key.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"value\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "field",
+                                    ":field_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    },
+                                    {
+                                      "key": "field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-3662a9dd-e311-4b12-a941-be536f2a6ff9"
+                            },
+                            {
+                              "id": "463050ac-a663-4d6d-a98a-b49ef9507bda",
+                              "name": "Field or config not found.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"value\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "field",
+                                    ":field_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    },
+                                    {
+                                      "key": "field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-463050ac-a663-4d6d-a98a-b49ef9507bda"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:23:00.000Z",
+                          "updatedAt": "2026-07-28T01:23:00.000Z",
+                          "uid": "35240-55d20d72-4ef0-4d42-b883-2abfd90ab11c"
+                        },
+                        {
+                          "name": "Cobalt Delete Field Value by ID in Config",
+                          "id": "96db5a7a-1758-4a7a-ab8d-1bd02c9d6103",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "config",
+                                ":config_id",
+                                "field",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "ec68645f-3cc3-4960-9900-9909945801ee",
+                                  "key": "config_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The configuration ID."
+                                },
+                                {
+                                  "id": "f6daaac2-e14f-4735-b603-b8675784a44b",
+                                  "key": "field_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The field ID."
+                                }
+                              ]
+                            },
+                            "description": "Deletes a specific field value from a configuration."
+                          },
+                          "response": [
+                            {
+                              "id": "f06d9bab-ac8a-4048-8049-800bb4b57f66",
+                              "name": "Field value deleted successfully.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "field",
+                                    ":field_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    },
+                                    {
+                                      "key": "field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-f06d9bab-ac8a-4048-8049-800bb4b57f66"
+                            },
+                            {
+                              "id": "e9e18940-4c8b-4233-b1d6-f939629ca309",
+                              "name": "Unauthorized - Invalid API key.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "field",
+                                    ":field_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    },
+                                    {
+                                      "key": "field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-e9e18940-4c8b-4233-b1d6-f939629ca309"
+                            },
+                            {
+                              "id": "01dbe078-9e4f-4e63-b2b7-da6f219ac595",
+                              "name": "Field or config not found.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/field/:field_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "field",
+                                    ":field_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    },
+                                    {
+                                      "key": "field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-01dbe078-9e4f-4e63-b2b7-da6f219ac595"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:23:00.000Z",
+                          "updatedAt": "2026-07-28T01:23:00.000Z",
+                          "uid": "35240-96db5a7a-1758-4a7a-ab8d-1bd02c9d6103"
+                        }
+                      ],
+                      "id": "4858875e-42d0-42ec-a617-c094a142c74e",
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-4858875e-42d0-42ec-a617-c094a142c74e"
+                    }
+                  ],
+                  "id": "70b237d1-011e-4417-a65b-3155ceaaa91c",
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-70b237d1-011e-4417-a65b-3155ceaaa91c"
+                },
+                {
+                  "name": "rule-engine",
+                  "item": [
+                    {
+                      "name": "options",
+                      "item": [
+                        {
+                          "name": "Cobalt Get Options for Rule Engine",
+                          "id": "cf021513-965a-45ba-93b3-af6100b689cd",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) The linked account ID.",
+                                "key": "linked_account_id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/public/config/:config_id/rule-engine/options",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "public",
+                                "config",
+                                ":config_id",
+                                "rule-engine",
+                                "options"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d691191c-8c05-407d-970f-e694fb9b7a16",
+                                  "key": "config_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The configuration ID."
+                                }
+                              ]
+                            },
+                            "description": "Returns the available options for the rule engine of a configuration."
+                          },
+                          "response": [
+                            {
+                              "id": "8822c24f-a6b0-4626-9646-332d3593b51b",
+                              "name": "Rule engine options retrieved successfully.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/rule-engine/options",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "rule-engine",
+                                    "options"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-8822c24f-a6b0-4626-9646-332d3593b51b"
+                            },
+                            {
+                              "id": "a544c81a-e21b-43f1-90b2-eaca26a79e15",
+                              "name": "Unauthorized - Invalid API key.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/rule-engine/options",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "rule-engine",
+                                    "options"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-a544c81a-e21b-43f1-90b2-eaca26a79e15"
+                            },
+                            {
+                              "id": "eed2e9fd-91bb-4598-b683-1dc15e2268b1",
+                              "name": "Config not found.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) The linked account ID.",
+                                    "key": "linked_account_id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/public/config/:config_id/rule-engine/options",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "public",
+                                    "config",
+                                    ":config_id",
+                                    "rule-engine",
+                                    "options"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "config_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:23:00.000Z",
+                              "updatedAt": "2026-07-28T01:23:00.000Z",
+                              "uid": "35240-eed2e9fd-91bb-4598-b683-1dc15e2268b1"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:23:00.000Z",
+                          "updatedAt": "2026-07-28T01:23:00.000Z",
+                          "uid": "35240-cf021513-965a-45ba-93b3-af6100b689cd"
+                        }
+                      ],
+                      "id": "5ef6313e-0309-467e-bbcb-7de06af7d451",
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-5ef6313e-0309-467e-bbcb-7de06af7d451"
+                    }
+                  ],
+                  "id": "dc45a4f8-87fb-41a7-8987-986758ddb21a",
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-dc45a4f8-87fb-41a7-8987-986758ddb21a"
+                },
+                {
+                  "name": "Cobalt Get Config by ID",
+                  "id": "ef00824f-bc7f-4b1f-8de6-b5293959bfc2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The linked account ID.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/config/:config_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "config",
+                        ":config_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "79561e7b-80ed-4b06-b78e-152653e09fdb",
+                          "key": "config_id",
+                          "value": "<string>",
+                          "description": "(Required) The configuration ID."
+                        }
+                      ]
+                    },
+                    "description": "Returns a configuration by its unique identifier."
+                  },
+                  "response": [
+                    {
+                      "id": "dba0ba33-31d9-48cf-97ed-1d69e6548e16",
+                      "name": "Config retrieved successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/:config_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            ":config_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "config_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_id\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"linked_account_id\": \"<string>\",\n  \"fields\": {},\n  \"workflows\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-dba0ba33-31d9-48cf-97ed-1d69e6548e16"
+                    },
+                    {
+                      "id": "728320fd-674d-4da4-91f2-2398c51e2f03",
+                      "name": "Unauthorized - Invalid API key.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/:config_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            ":config_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "config_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-728320fd-674d-4da4-91f2-2398c51e2f03"
+                    },
+                    {
+                      "id": "fd94e73d-c219-47db-93e8-e647c2dadc1b",
+                      "name": "Config not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/:config_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            ":config_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "config_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-fd94e73d-c219-47db-93e8-e647c2dadc1b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-ef00824f-bc7f-4b1f-8de6-b5293959bfc2"
+                },
+                {
+                  "name": "Cobalt Update Config",
+                  "id": "5d7176a2-57d5-4ce6-91d9-713c9df6a9ba",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The linked account ID.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"fields\": {},\n  \"workflows\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/public/config/:config_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "config",
+                        ":config_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8c228fbd-bc42-44f0-b10e-bc89260d5cdf",
+                          "key": "config_id",
+                          "value": "<string>",
+                          "description": "(Required) The configuration ID."
+                        }
+                      ]
+                    },
+                    "description": "Updates an existing configuration with fields and workflows."
+                  },
+                  "response": [
+                    {
+                      "id": "7a03a326-3e7a-4948-905a-2214692e3f41",
+                      "name": "Config updated successfully.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fields\": {},\n  \"workflows\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/:config_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            ":config_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "config_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_id\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"linked_account_id\": \"<string>\",\n  \"fields\": {},\n  \"workflows\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-7a03a326-3e7a-4948-905a-2214692e3f41"
+                    },
+                    {
+                      "id": "2bb69002-99d3-4977-9b90-5e20f92ea21a",
+                      "name": "Unauthorized - Invalid API key.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fields\": {},\n  \"workflows\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/:config_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            ":config_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "config_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-2bb69002-99d3-4977-9b90-5e20f92ea21a"
+                    },
+                    {
+                      "id": "8d1acb5f-5cc2-470a-9118-cb4f8e429422",
+                      "name": "Config not found.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fields\": {},\n  \"workflows\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/:config_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            ":config_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "config_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-8d1acb5f-5cc2-470a-9118-cb4f8e429422"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-5d7176a2-57d5-4ce6-91d9-713c9df6a9ba"
+                },
+                {
+                  "name": "Cobalt Delete Config",
+                  "id": "490ba6d3-4f87-4cf2-9925-a0b99769a80c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) The linked account ID.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/config/:config_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "config",
+                        ":config_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d78d9b31-edac-46f4-bcfc-52c8580e7691",
+                          "key": "config_id",
+                          "value": "<string>",
+                          "description": "(Required) The configuration ID."
+                        }
+                      ]
+                    },
+                    "description": "Deletes a configuration by its unique identifier."
+                  },
+                  "response": [
+                    {
+                      "id": "d8811fc5-a046-41c4-9cb6-7948fb569a04",
+                      "name": "Config deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/:config_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            ":config_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "config_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-d8811fc5-a046-41c4-9cb6-7948fb569a04"
+                    },
+                    {
+                      "id": "3e1a8884-65e0-4076-90df-77520d57a13e",
+                      "name": "Unauthorized - Invalid API key.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/:config_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            ":config_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "config_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-3e1a8884-65e0-4076-90df-77520d57a13e"
+                    },
+                    {
+                      "id": "81e2d8ee-fcf5-43f4-9e36-9055f0afb151",
+                      "name": "Config not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/:config_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            ":config_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "config_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-81e2d8ee-fcf5-43f4-9e36-9055f0afb151"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-490ba6d3-4f87-4cf2-9925-a0b99769a80c"
+                }
+              ],
+              "id": "a32ca666-f52d-491d-9f50-bb28dd88b7a2",
+              "createdAt": "2026-07-28T01:23:00.000Z",
+              "updatedAt": "2026-07-28T01:23:00.000Z",
+              "uid": "35240-a32ca666-f52d-491d-9f50-bb28dd88b7a2"
+            },
+            {
+              "name": "all",
+              "item": [
+                {
+                  "name": "Cobalt Get All Installed Configs",
+                  "id": "9f971e13-dd19-4ac5-8e84-6f0dd660abad",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The linked account ID.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/public/config/all",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "config",
+                        "all"
+                      ]
+                    },
+                    "description": "Returns all installed configurations for a linked account."
+                  },
+                  "response": [
+                    {
+                      "id": "ce8f422d-c5fe-470b-8da1-0ec2cfe756f9",
+                      "name": "List of configs retrieved successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/all",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            "all"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"_id\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"linked_account_id\": \"<string>\",\n    \"fields\": {},\n    \"workflows\": [\n      {\n        \"id\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      }\n    ],\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  {\n    \"_id\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"linked_account_id\": \"<string>\",\n    \"fields\": {},\n    \"workflows\": [\n      {\n        \"id\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      }\n    ],\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n]",
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-ce8f422d-c5fe-470b-8da1-0ec2cfe756f9"
+                    },
+                    {
+                      "id": "dffe85b4-835e-4811-8a1a-b7272814a8c4",
+                      "name": "Unauthorized - Invalid API key.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The linked account ID.",
+                            "key": "linked_account_id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/public/config/all",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "public",
+                            "config",
+                            "all"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-dffe85b4-835e-4811-8a1a-b7272814a8c4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-9f971e13-dd19-4ac5-8e84-6f0dd660abad"
+                }
+              ],
+              "id": "14532538-2924-43c8-917c-9802d8da2c72",
+              "createdAt": "2026-07-28T01:23:00.000Z",
+              "updatedAt": "2026-07-28T01:23:00.000Z",
+              "uid": "35240-14532538-2924-43c8-917c-9802d8da2c72"
+            },
+            {
+              "name": "Cobalt Upsert Config",
+              "id": "d024bf89-677e-4a58-ac06-b2173902e488",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The linked account ID.",
+                    "key": "linked_account_id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"slug\": \"<string>\",\n  \"config_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/public/config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "public",
+                    "config"
+                  ]
+                },
+                "description": "Creates a new configuration or returns the existing one for the specified linked account and application. Configs store customizations for each integration of your end-customers."
+              },
+              "response": [
+                {
+                  "id": "adf31c26-bbff-4984-9ec2-00f149084da0",
+                  "name": "Config upserted successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The linked account ID.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"slug\": \"<string>\",\n  \"config_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/public/config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "config"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"_id\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"linked_account_id\": \"<string>\",\n  \"fields\": {},\n  \"workflows\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-adf31c26-bbff-4984-9ec2-00f149084da0"
+                },
+                {
+                  "id": "09e0e2b4-7e27-415f-ab02-fb3298ae3d33",
+                  "name": "Unauthorized - Invalid API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The linked account ID.",
+                        "key": "linked_account_id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"slug\": \"<string>\",\n  \"config_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/public/config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "public",
+                        "config"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-09e0e2b4-7e27-415f-ab02-fb3298ae3d33"
+                }
+              ],
+              "createdAt": "2026-07-28T01:23:00.000Z",
+              "updatedAt": "2026-07-28T01:23:00.000Z",
+              "uid": "35240-d024bf89-677e-4a58-ac06-b2173902e488"
+            }
+          ],
+          "id": "979af4ec-82bd-4699-a739-a5b5e4421f2e",
+          "createdAt": "2026-07-28T01:23:00.000Z",
+          "updatedAt": "2026-07-28T01:23:00.000Z",
+          "uid": "35240-979af4ec-82bd-4699-a739-a5b5e4421f2e"
+        }
+      ],
+      "id": "8b565816-a350-4849-9bbc-b821ef629cc0",
+      "createdAt": "2026-07-28T01:23:00.000Z",
+      "updatedAt": "2026-07-28T01:23:00.000Z",
+      "uid": "35240-8b565816-a350-4849-9bbc-b821ef629cc0"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.gocobalt.io/api/v2"
+    }
+  ]
+}

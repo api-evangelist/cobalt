@@ -1,0 +1,32 @@
+{
+  "provider": "cobalt",
+  "sources": [
+    "cobalt-applications-api-openapi.yml",
+    "cobalt-cobalt-hosted-api-openapi.yml",
+    "cobalt-config-api-openapi.yml",
+    "cobalt-datastores-api-openapi.yml",
+    "cobalt-events-api-openapi.yml",
+    "cobalt-executions-api-openapi.yml",
+    "cobalt-linked-accounts-api-openapi.yml",
+    "cobalt-public-workflows-api-openapi.yml",
+    "cobalt-session-token-api-openapi.yml",
+    "cobalt-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "cobalt-applications-api-openapi.yml",
+    "cobalt-cobalt-hosted-api-openapi.yml",
+    "cobalt-config-api-openapi.yml",
+    "cobalt-datastores-api-openapi.yml",
+    "cobalt-events-api-openapi.yml",
+    "cobalt-executions-api-openapi.yml",
+    "cobalt-linked-accounts-api-openapi.yml",
+    "cobalt-public-workflows-api-openapi.yml",
+    "cobalt-session-token-api-openapi.yml",
+    "cobalt-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
