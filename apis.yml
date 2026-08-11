@@ -337,7 +337,7 @@ common:
     url: https://github.com/cobalthq
   - type: LinkedIn
     url: https://www.linkedin.com/company/cobalt_io
-  - url: openapi/cobalt-api-openapi.yml
+  - url: openapi/_original/cobalt-api-openapi.yml
     type: OpenAPI
   - url: rules/cobalt-rules.yml
     type: SpectralRuleset
