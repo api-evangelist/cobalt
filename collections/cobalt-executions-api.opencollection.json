@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cobalt Applications Executions API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Executions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Get Execution by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/execution/:execution_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "execution_id",
+                "value": "",
+                "type": "path",
+                "description": "The execution ID."
+              }
+            ]
+          },
+          "docs": "Retrieves the details of a specific workflow execution."
+        },
+        {
+          "info": {
+            "name": "Cobalt List Executions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/execution",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns a list of workflow executions for a linked account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

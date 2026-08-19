@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cobalt Applications Cobalt Hosted API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cobalt Hosted",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Cobalt Hosted Portal URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/cobalt-hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a hosted portal URL for a linked account, enabling end-customers to manage their integrations through a Cobalt-hosted interface."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

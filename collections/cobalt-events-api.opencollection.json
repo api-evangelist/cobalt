@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cobalt Applications Events API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Trigger Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/event/:slug",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "The event slug identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers a webhook event created for your app. The event must first be created on your Cobalt dashboard. Events are used to trigger workflows in Cobalt."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

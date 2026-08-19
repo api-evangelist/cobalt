@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cobalt Applications Webhooks API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Get Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/webhook",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieves the webhook subscription for a linked account."
+        },
+        {
+          "info": {
+            "name": "Cobalt Create Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/webhook",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a webhook subscription. Webhooks allow you to receive real-time notifications when events occur in Cobalt."
+        },
+        {
+          "info": {
+            "name": "Cobalt Unsubscribe Webhook Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/webhook/unsubscribe",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unsubscribes from webhook events for a linked account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cobalt Applications API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Get All Applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/application",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns all enabled applications. If a linked_account_id header is provided, returns applications specific to that linked account."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get Application by Slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/application/:slug",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "The application slug identifier."
+              }
+            ]
+          },
+          "docs": "Returns application details for the specified application slug."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

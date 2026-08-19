@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cobalt Applications Linked Accounts API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Linked Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Get All Linked Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account"
+          },
+          "docs": "Returns a list of all linked accounts."
+        },
+        {
+          "info": {
+            "name": "Cobalt Create Linked Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new linked account. Linked accounts represent your end-customers on whose behalf you call the Cobalt APIs."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get Linked Account by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account/:linked_account_id",
+            "params": [
+              {
+                "name": "linked_account_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the linked account."
+              }
+            ]
+          },
+          "docs": "Returns a linked account by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Cobalt Delete Linked Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account/:linked_account_id",
+            "params": [
+              {
+                "name": "linked_account_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the linked account."
+              }
+            ]
+          },
+          "docs": "Deletes a linked account by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Cobalt Upsert Linked Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account/upsert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates a linked account. If the linked account exists, it will be updated; otherwise a new one will be created."
+        },
+        {
+          "info": {
+            "name": "Cobalt Migrate Token for Linked Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/linked-account/:linked_account_id/migrate-token",
+            "params": [
+              {
+                "name": "linked_account_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the linked account."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Migrates authentication tokens for a linked account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

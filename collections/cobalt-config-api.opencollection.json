@@ -1,0 +1,290 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cobalt Applications Config API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cobalt Upsert Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gocobalt.io/api/v2/public/config",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new configuration or returns the existing one for the specified linked account and application. Configs store customizations for each integration of your end-customers."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get Config by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              }
+            ]
+          },
+          "docs": "Returns a configuration by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Cobalt Update Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing configuration with fields and workflows."
+        },
+        {
+          "info": {
+            "name": "Cobalt Delete Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              }
+            ]
+          },
+          "docs": "Deletes a configuration by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get All Installed Configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/config/all",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns all installed configurations for a linked account."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get All Config Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id/fields",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              }
+            ]
+          },
+          "docs": "Returns all fields for a specific configuration."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get Field Value by ID in Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id/field/:field_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              },
+              {
+                "name": "field_id",
+                "value": "",
+                "type": "path",
+                "description": "The field ID."
+              }
+            ]
+          },
+          "docs": "Returns a specific field value from a configuration."
+        },
+        {
+          "info": {
+            "name": "Cobalt Update Field Value by ID in Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id/field/:field_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              },
+              {
+                "name": "field_id",
+                "value": "",
+                "type": "path",
+                "description": "The field ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a specific field value in a configuration."
+        },
+        {
+          "info": {
+            "name": "Cobalt Delete Field Value by ID in Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id/field/:field_id",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              },
+              {
+                "name": "field_id",
+                "value": "",
+                "type": "path",
+                "description": "The field ID."
+              }
+            ]
+          },
+          "docs": "Deletes a specific field value from a configuration."
+        },
+        {
+          "info": {
+            "name": "Cobalt Get Options for Rule Engine",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gocobalt.io/api/v2/public/config/:config_id/rule-engine/options",
+            "headers": [
+              {
+                "name": "linked_account_id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "config_id",
+                "value": "",
+                "type": "path",
+                "description": "The configuration ID."
+              }
+            ]
+          },
+          "docs": "Returns the available options for the rule engine of a configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
