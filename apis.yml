@@ -7,6 +7,8 @@ apis:
   humanURL: https://docs.gocobalt.io/api-reference/overview
   baseURL: https://api.gocobalt.io/api/v2
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -127,6 +129,8 @@ apis:
   humanURL: https://docs.gocobalt.io/api-reference/overview
   baseURL: https://api.gocobalt.io/api/v2
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -157,6 +161,8 @@ apis:
   humanURL: https://docs.gocobalt.io/api-reference/overview
   baseURL: https://api.gocobalt.io/api/v2
   tags:
+  - Execution
+  tags_raw:
   - Executions
   properties:
   - type: OpenAPI
@@ -277,6 +283,8 @@ apis:
   humanURL: https://docs.gocobalt.io/api-reference/overview
   baseURL: https://api.gocobalt.io/api/v2
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
@@ -303,6 +311,10 @@ apis:
     url: rules/cobalt-rules.yml
 name: Cobalt
 tags:
+  - Automation
+  - Embedded iPaaS
+  - Integration
+tags_raw:
   - Automation
   - Embedded iPaaS
   - Integrations
