@@ -338,11 +338,12 @@ accessModel:
   try_now: true
   public: false
   label: Freemium · Self-serve signup
-  confidence: high
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cobalt.png
 access: 3rd-Party
@@ -1513,7 +1514,7 @@ common:
     type: Blog
 created: '2025-06-05'
 modified: '2026-05-19'
-position: Consumer
+position: Consuming
 description: >-
   Traditional integrations are slow, fragmented, and hinder growth. Cobalt is changing that. A next-gen integration
   platform with 1,000+ connectors and AI-driven automation redefining how businesses integrate, operate, and scale.
