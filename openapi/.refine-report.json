@@ -1,16 +1,7 @@
 {
   "provider": "cobalt",
   "sources": [
-    "cobalt-applications-api-openapi.yml",
-    "cobalt-cobalt-hosted-api-openapi.yml",
-    "cobalt-config-api-openapi.yml",
-    "cobalt-datastores-api-openapi.yml",
-    "cobalt-events-api-openapi.yml",
-    "cobalt-executions-api-openapi.yml",
-    "cobalt-linked-accounts-api-openapi.yml",
-    "cobalt-public-workflows-api-openapi.yml",
-    "cobalt-session-token-api-openapi.yml",
-    "cobalt-webhooks-api-openapi.yml"
+    "_original/cobalt-api-openapi.yml"
   ],
   "outputs": [
     "cobalt-applications-api-openapi.yml",
@@ -27,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "cobalt-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "cobalt-applications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cobalt-cobalt-hosted-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cobalt-config-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cobalt-datastores-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cobalt-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cobalt-executions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cobalt-linked-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cobalt-public-workflows-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cobalt-session-token-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cobalt-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
