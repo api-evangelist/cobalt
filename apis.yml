@@ -352,6 +352,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cobalt.png
 access: 3rd-Party
 common:
+- type: Plans
+  url: plans/cobalt-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/cobalt-rate-limits.yml
+- type: FinOps
+  url: finops/cobalt-finops.yml
 - type: CapabilityMap
   url: capabilities/cobalt-capability-edges.yml
   name: Cobalt Business Capability Map
