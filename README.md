@@ -1,4 +1,4 @@
-# Cobalt (cobalt)
+# Cobalt
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,82 +66,178 @@
 
 Traditional integrations are slow, fragmented, and hinder growth. Cobalt is changing that. A next-gen integration platform with 1,000+ connectors and AI-driven automation redefining how businesses integrate, operate, and scale.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/cobalt/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/cobalt/refs/heads/main/apis.yml)
+**Areas:** Automation · Embedded iPaaS · Integration
 
-## Scope
+## Cobalt on APIs.io
 
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Cobalt is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cobalt/](https://apis.io/providers/cobalt/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-- Automation
-- Embedded iPaaS
-- Integrations
+- [Cobalt Applications API](https://apis.io/apis/cobalt/cobalt-applications-api/) — Retrieve details about enabled applications.
+- [Cobalt Hosted API](https://apis.io/apis/cobalt/cobalt-cobalt-hosted-api/) — Generate hosted portal URLs for linked accounts.
+- [Cobalt Config API](https://apis.io/apis/cobalt/cobalt-config-api/) — Manage integration configurations for linked accounts.
+- [Cobalt Datastores API](https://apis.io/apis/cobalt/cobalt-datastores-api/) — Manage datastores and their records.
+- [Cobalt Events API](https://apis.io/apis/cobalt/cobalt-events-api/) — Trigger events to initiate workflows.
+- [Cobalt Executions API](https://apis.io/apis/cobalt/cobalt-executions-api/) — Retrieve details about workflow executions.
+- [Cobalt Linked Accounts API](https://apis.io/apis/cobalt/cobalt-linked-accounts-api/) — Manage linked accounts representing your end-customers.
+- [Cobalt Public Workflows API](https://apis.io/apis/cobalt/cobalt-public-workflows-api/) — Create and manage public workflows.
+- [Cobalt Session Token API](https://apis.io/apis/cobalt/cobalt-session-token-api/) — Generate session tokens for linked account authentication.
+- [Cobalt Webhooks API](https://apis.io/apis/cobalt/cobalt-webhooks-api/) — Subscribe to real-time notifications when events occur in Cobalt.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-06-05
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Cobalt API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Cobalt API enables developers to programmatically manage integrations, linked accounts, configurations, events, webhooks, executions, public workflows, and datastores within the Cobalt embedded integration platform. Cobalt helps product and engineering teams build native integrations, deploy them within days, and monetize them with the help of AI agents.
+- [Cobalt Agentic Access](https://apis.io/agentic-access/cobalt/cobalt-agentic-access/)
 
-- **Human URL:** [https://docs.gocobalt.io/api-reference/overview](https://docs.gocobalt.io/api-reference/overview)
-- **Base URL:** `https://api.gocobalt.io/api/v2`
+#### JSON Schema (7)
 
-#### Tags
+The data models the API reads and writes.
 
-- Automation
-- Embedded SaaS Integration
-- Integrations
-- iPaaS
+- [Application](https://apis.io/schemas/cobalt/application/)
+- [Config](https://apis.io/schemas/cobalt/config/)
+- [Datastore](https://apis.io/schemas/cobalt/datastore/)
+- [Execution](https://apis.io/schemas/cobalt/execution/)
+- [LinkedAccount](https://apis.io/schemas/cobalt/linked-account/)
+- [Webhook](https://apis.io/schemas/cobalt/webhook/)
+- [Workflow](https://apis.io/schemas/cobalt/workflow/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://docs.gocobalt.io/api-reference/overview)
-- [OpenAPI](openapi/cobalt-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cobalt-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cobalt-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/linked-account.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/application.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/config.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/webhook.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/execution.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workflow.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/datastore.json) — [JSON Schema](https://json-schema.org/specification)
-- [J S O N L D Context](json-ld/cobalt-context.jsonld)
-- [Spectral Ruleset](rules/cobalt-rules.yml)
+Linked-data contexts for the provider's vocabulary.
 
-## Common Properties
+- [Cobalt Context](https://apis.io/jsonld/cobalt/cobalt-context/)
 
-- [GitHub Organization](https://github.com/cobalthq)
-- [LinkedIn](https://www.linkedin.com/company/cobalt_io)
-- [OpenAPI](openapi/cobalt-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Spectral Ruleset](rules/cobalt-rules.yml)
-- [J S O N L D Context](json-ld/cobalt-context.jsonld)
-- [About](https://www.gocobalt.io/about-us)
+#### Collections (21)
+
+Postman and Open Collection request collections.
+
+- [Cobalt API](https://apis.io/collections/cobalt/open-cobalt-api/)
+- [Cobalt Applications API](https://apis.io/collections/cobalt/open-cobalt-applications-api/)
+- [Cobalt Applications Cobalt Hosted API](https://apis.io/collections/cobalt/open-cobalt-cobalt-hosted-api/)
+- [Cobalt Applications Config API](https://apis.io/collections/cobalt/open-cobalt-config-api/)
+- [Cobalt Applications Datastores API](https://apis.io/collections/cobalt/open-cobalt-datastores-api/)
+- [Cobalt Applications Events API](https://apis.io/collections/cobalt/open-cobalt-events-api/)
+- [Cobalt Applications Executions API](https://apis.io/collections/cobalt/open-cobalt-executions-api/)
+- [Cobalt Applications Linked Accounts API](https://apis.io/collections/cobalt/open-cobalt-linked-accounts-api/)
+- [Cobalt Applications Public Workflows API](https://apis.io/collections/cobalt/open-cobalt-public-workflows-api/)
+- [Cobalt Applications Session Token API](https://apis.io/collections/cobalt/open-cobalt-session-token-api/)
+- [Cobalt Applications Webhooks API](https://apis.io/collections/cobalt/open-cobalt-webhooks-api/)
+- [Cobalt Applications API](https://apis.io/collections/cobalt/postman-cobalt-applications-api/)
+- [Cobalt Applications Cobalt Hosted API](https://apis.io/collections/cobalt/postman-cobalt-cobalt-hosted-api/)
+- [Cobalt Applications Config API](https://apis.io/collections/cobalt/postman-cobalt-config-api/)
+- [Cobalt Applications Datastores API](https://apis.io/collections/cobalt/postman-cobalt-datastores-api/)
+- [Cobalt Applications Events API](https://apis.io/collections/cobalt/postman-cobalt-events-api/)
+- [Cobalt Applications Executions API](https://apis.io/collections/cobalt/postman-cobalt-executions-api/)
+- [Cobalt Applications Linked Accounts API](https://apis.io/collections/cobalt/postman-cobalt-linked-accounts-api/)
+- [Cobalt Applications Public Workflows API](https://apis.io/collections/cobalt/postman-cobalt-public-workflows-api/)
+- [Cobalt Applications Session Token API](https://apis.io/collections/cobalt/postman-cobalt-session-token-api/)
+- [Cobalt Applications Webhooks API](https://apis.io/collections/cobalt/postman-cobalt-webhooks-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Cobalt — jsonschema rules](https://apis.io/rules/cobalt/cobalt-jsonschema-spectral-rules/)
+- [Cobalt API Rules](https://apis.io/rules/cobalt/cobalt-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Cobalt Authentication](https://apis.io/security/cobalt/cobalt-authentication/)
+- [Cobalt Domain Security](https://apis.io/security/cobalt/cobalt-domain-security/)
+- [Cobalt Trust Center](https://apis.io/security/cobalt/cobalt-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Cobalt Plans Pricing](https://apis.io/plans/cobalt/cobalt-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Cobalt Rate Limits](https://apis.io/rate-limits/cobalt/cobalt-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Cobalt Finops](https://apis.io/finops/cobalt/cobalt-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.gocobalt.io/)
-- [Integrations](https://www.gocobalt.io/integrations)
-- [Getting Started](https://docs.gocobalt.io/overview)
-- [Workflows](https://docs.gocobalt.io/build/workflow/overview)
-- [Security](https://docs.gocobalt.io/governance/overview)
-- [Privacy Policy](https://docs.gocobalt.io/governance/privacy)
-- [Terms of Service](https://docs.gocobalt.io/governance/terms-of-use)
 - [Documentation](https://docs.gocobalt.io/api-reference/overview)
-- [S D Ks](https://docs.gocobalt.io/sdks/overview)
+- [Getting started](https://docs.gocobalt.io/overview)
 - [Pricing](https://www.gocobalt.io/pricing)
-- [Security](https://www.gocobalt.io/security)
-- [Status Page](https://status.gocobalt.io/status/app)
-- [Sign Up](https://www.gocobalt.io/sign-up)
-- [Login](https://app.gocobalt.io/login)
-- [Features](undefined)
-- [Use Cases](undefined)
+- [Blog](https://www.gocobalt.io/blog/feed)
+- [Security](https://docs.gocobalt.io/governance/overview)
+- [Terms of service](https://docs.gocobalt.io/governance/terms-of-use)
+- [Privacy policy](https://docs.gocobalt.io/governance/privacy)
+- [GitHub](https://github.com/cobalthq)
+- [Status](https://status.gocobalt.io/status/app)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 53.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 62.2 |
+| Contract governance | 13.6 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 44.0 |
+| Access clarity | 60.5 |
+
+**Agent readiness 19.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cobalt/](https://apis.io/providers/cobalt/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Cobalt: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cobalt/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
